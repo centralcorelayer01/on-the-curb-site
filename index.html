@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On The Curb Real Estate | Investor-Ready Opportunities</title>
+    <meta name="description" content="Access 200+ exclusive off-market property deals. Verified buy-to-let and HMO opportunities.">
+    <style>
+        /* * CORE VARIABLES & RESET 
+         */
+        :root {
+            /* Colors from Left/Right Synthesis */
+            --bg-body: #000000;
+            --bg-surface: #0a0a0a;
+            --bg-card-hover: #111111;
+            
+            --accent-primary: #e93f00; /* The specific orange */
+            --accent-glow: rgba(233, 63, 0, 0.3);
+            
+            --text-main: #ffffff;
+            --text-muted: #666666;
+            --border-light: #222222;
+            --border-hover: #e93f00;
+            
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 8rem;
+            
+            --radius-sm: 4px;
+            --radius-md: 12px;
+            
+            --transition-smooth: 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition-smooth); }
+        ul { list-style: none; }
+        
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            color: #fff;
+            /* Architectural shadow */
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5); 
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-sm);
+            max-width: 65ch;
+        }
+
+        .text-accent { color: var(--accent-primary); }
+        .text-center { text-align: center; }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent-primary);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid var(--accent-primary);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-primary);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* BUBBLES / PILLS */
+        .bubble-pill {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-primary);
+            padding: 0.5rem 1.2rem;
+            border: 1px solid rgba(233, 63, 0, 0.3);
+            border-radius: 50px;
+            background: rgba(233, 63, 0, 0.05);
+        }
+
+        /* * HEADER */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid var(--border-light);
+            padding: 1.2rem 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .logo span { color: var(--accent-primary); margin-right: 5px; }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.8;
+        }
+
+        .nav-links a:hover { opacity: 1; color: var(--accent-primary); }
+        .mobile-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* * HERO SECTION (Updated with 3D Canvas) */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* The 3D Canvas Container */
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        /* Softer Gradient Overlay */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Gradient goes to transparent, allowing the "city" to be seen, but fades the bottom */
+            background: radial-gradient(circle at center, transparent 0%, var(--bg-body) 85%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .hero-content { 
+            max-width: 1100px; /* Increased to keep Hero text on two lines at full width */
+            position: relative;
+            z-index: 3;
+            margin-top: -30px; 
+        }
+
+        .hero-bubbles {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .bubble-item {
+            font-size: 0.8rem;
+            color: #ccc;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(20,20,20,0.6); 
+            backdrop-filter: blur(8px);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .bubble-dot {
+            width: 6px; height: 6px; background: var(--accent-primary);
+            border-radius: 50%;
+        }
+
+        /* * WHY SECTION */
+        #why { padding: var(--spacing-xl) 0; }
+        
+        .why-intro { max-width: 800px; margin: 0 auto var(--spacing-lg); text-align: center; }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .feature-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        
+        .feature-card p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--text-muted);
+        }
+
+        .tagline-banner {
+            text-align: center;
+            margin-top: var(--spacing-lg);
+        }
+
+        .tagline-banner h3 {
+            color: var(--accent-primary);
+            letter-spacing: 0.15em;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* * PROCESS / ACCORDIONS */
+        #clarity { padding: var(--spacing-lg) 0; }
+        
+        .accordion-container {
+            max-width: 100%;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 1.5rem 0;
+            background: none;
+            border: none;
+            color: #fff;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header span {
+            color: var(--accent-primary);
+            font-size: 1.5rem;
+            font-weight: 400;
+            transition: transform 0.3s;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--text-muted);
+        }
+
+        .active .accordion-header span { transform: rotate(45deg); }
+        .active .accordion-content { max-height: 300px; padding-bottom: 1.5rem; }
+
+        /* * HOW IT WORKS */
+        #how-it-works {
+            padding: var(--spacing-xl) 0;
+            background: linear-gradient(to bottom, var(--bg-body), #050505);
+        }
+
+        .hiw-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .sidebar-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar-card ul li {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 10px;
+            color: var(--text-muted);
+        }
+        .check-icon { color: var(--accent-primary); }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .step-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            position: relative;
+            transition: var(--transition-smooth);
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: default;
+        }
+
+        .step-card:hover {
+            border-color: var(--accent-primary);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .step-num {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            transition: 0.3s;
+            line-height: 1;
+        }
+
+        .step-card:hover .step-num { color: rgba(233, 63, 0, 0.2); }
+
+        .step-title {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            z-index: 2;
+        }
+
+        .step-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+            transition: 0.3s;
+            z-index: 2;
+        }
+
+        .step-card:hover .step-desc { opacity: 1; color: #ccc; }
+
+        /* * INVESTOR ACCESS */
+        #investor-access {
+            padding: var(--spacing-xl) 0;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .left-content .quote {
+            border-left: 3px solid var(--accent-primary);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .access-list li {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .access-list strong { color: #fff; }
+        .tick { color: var(--accent-primary); margin-right: 8px; font-weight: bold; }
+
+        /* Form (V3 Style updated for V15 base variables) */
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: var(--bg-body);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: #fff;
+            font-family: inherit;
+            transition: var(--transition-smooth);
+            font-size: 0.95rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .checkbox-wrapper input {
+            width: auto;
+            margin-top: 3px;
+        }
+
+        .disclaimer-text {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 1rem;
+            line-height: 1.4;
+        }
+
+        /* * CONTACT */
+        #contact {
+            padding: var(--spacing-xl) 0;
+            background: #000;
+        }
+
+        .contact-wrap {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* * FOOTER */
+        footer {
+            padding: 4rem 0 3rem; 
+            background: #000000;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .footer-flex {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-flex a {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-flex a:hover { color: var(--accent-primary); }
+
+        .legal-copy { 
+            text-align: center; 
+            opacity: 0.6; 
+            line-height: 1.8;
+            font-size: 0.8rem;
+        }
+        
+        .legal-copy p {
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hiw-layout, .split-layout { grid-template-columns: 1fr; }
+            .sidebar-card { position: relative; top: 0; margin-bottom: 2rem; }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .footer-flex { gap: 1rem; flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <span>OnTheCurb</span> REAL ESTATE LTD
+            </a>
+            <div class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#investor-access">Investor Access</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <div class="mobile-toggle">☰</div>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div id="canvas-container"></div>
+        <div class="hero-overlay"></div> 
+
+        <div class="container hero-content">
+            <div class="hero-bubbles">
+                <div class="bubble-item"><span class="bubble-dot"></span> Regulated Framework</div>
+                <div class="bubble-item"><span class="bubble-dot"></span> Solicitor-Led</div>
+                <div class="bubble-item"><span class="bubble-dot"></span> 200+ Deals</div>
+            </div>
+            
+            <h1>Investor-Ready Opportunities.<br><span class="text-accent">Fully Packaged. Structured.</span></h1>
+            <p style="margin: 0 auto 2rem;">Access to professionally structured UK investment property. We provide opportunities from sourcing to operation-ready, prioritising structure, documentation, and disciplined progression.</p>
+            
+            <a href="#investor-access" class="btn">Request Investor Access</a>
+            <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">Takes under 30 seconds • 100% Free</div>
+        </div>
+    </section>
+
+    <section id="why">
+        <div class="container">
+            <div class="why-intro">
+                <h2>Why On The Curb</h2>
+                <p style="max-width: 100%; margin: 0 auto; text-align: center;">On The Curb provides access to property opportunities prepared within a defined progression framework and solicitor-led transaction structure. Each opportunity is positioned for informed review before commitment, with clarity around process and commercial terms.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Defined Progression</h3>
+                    <p>A structured path from sourcing to completion, removing guesswork.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Documented Standards</h3>
+                    <p>Full transparency on ROI, yields, and condition reports.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Regulated Framework</h3>
+                    <p>ICO compliant and registered with the Property Redress Scheme.</p>
+                </div>
+            </div>
+
+            <div class="tagline-banner">
+                <h3>STRUCTURED PROGRESSION. CLEAR DOCUMENTATION. DISCIPLINED EXECUTION.</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="clarity">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h2 style="margin-bottom: 2rem;">Process & Structure Clarity</h2>
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <button class="accordion-header">How does access work? <span>+</span></button>
+                        <div class="accordion-content">
+                            <p>Complete the Investor Access form and you are automatically redirected to our off-market platform. There, you can review structured property opportunities presented with pricing, projections, and supporting data.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">What does reserving a property mean? <span>+</span></button>
+                        <div class="accordion-content">
+                            <p>Reservation secures the opportunity and removes it from circulation. It confirms your intent to progress and initiates structured deal progression. It is not a legally binding commitment to purchase until exchange of contracts.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">What happens after reservation? <span>+</span></button>
+                        <div class="accordion-content">
+                            <p>Once reserved, we coordinate: Further due diligence, Viewing arrangements, Offer confirmation, Formal presentation to seller, and Progression toward completion.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Who handles the legal transfer? <span>+</span></button>
+                        <div class="accordion-content">
+                            <p>Completion is handled through appointed solicitors in the standard legal manner. On The Curb oversees progression to maintain clarity.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Do you hold investor funds? <span>+</span></button>
+                        <div class="accordion-content">
+                            <p>No. On The Curb does not hold purchase funds. All transaction funds move through appropriate legal channels.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works">
+        <div class="container">
+            <h2 style="margin-bottom: 3rem;">How It Works</h2>
+            <div class="hiw-layout">
+                <aside class="sidebar-card">
+                    <h3 class="text-accent" style="margin-bottom: 1.5rem;">Fully Compliant.<br>Professionally Run.</h3>
+                    <ul>
+                        <li><span class="check-icon">✓</span> Registered With The Property Redress Scheme (PRS)</li>
+                        <li><span class="check-icon">✓</span> ICO GDPR Compliant</li>
+                        <li><span class="check-icon">✓</span> 200+ Exclusive Off-Market Properties Sourced</li>
+                    </ul>
+                    <hr style="border:0; border-top:1px solid var(--border-light); margin: 1.5rem 0;">
+                    <p style="color: #fff; font-weight: 700; margin-bottom: 1rem;">Join Our Network Today To Unlock Instant Access</p>
+                    <a href="#investor-access" class="btn" style="width: 100%; text-align: center;">Request Access</a>
+                </aside>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-num">01</div>
+                        <h3 class="step-title">Access</h3>
+                        <p class="step-desc">Complete the Investor Access form and gain immediate access to our off-market platform.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">02</div>
+                        <h3 class="step-title">Review</h3>
+                        <p class="step-desc">Browse structured property opportunities presented with pricing, projections, and supporting data.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">03</div>
+                        <h3 class="step-title">Secure</h3>
+                        <p class="step-desc">Reserve the opportunity to secure your position and remove it from circulation.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">04</div>
+                        <h3 class="step-title">Due Diligence</h3>
+                        <p class="step-desc">Work with our Deal Acquisition Team to complete further due diligence and arrange viewings.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">05</div>
+                        <h3 class="step-title">Offer</h3>
+                        <p class="step-desc">Provide proof of funds and confirm your offer prior to formal presentation to the seller.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">06</div>
+                        <h3 class="step-title">Completion</h3>
+                        <p class="step-desc">Legal completion managed via solicitors.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">07</div>
+                        <h3 class="step-title">Progression</h3>
+                        <p class="step-desc">Continued support for scaling your portfolio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="investor-access">
+        <div class="container">
+            <div class="split-layout">
+                <div class="left-content">
+                    <div class="bubble-pill" style="margin-bottom: 1.5rem;">Off-Market Access</div>
+                    
+                    <h1>Access 200+ Off-Market Deals</h1>
+                    
+                    <div class="quote">
+                        "90% of all millionaires become so through owning real estate."
+                        <br><span style="font-size: 0.9rem; color: var(--text-muted); font-style: normal; margin-top: 10px; display: block;">— Andrew Carnegie</span>
+                    </div>
+
+                    <h4 class="text-accent" style="margin-top: 2rem; margin-bottom: 1rem;">Why Investors Join Us</h4>
+                    <ul class="access-list">
+                        <li><span class="tick">✓</span> <strong>Verified by Data:</strong> Every deal is scored using our 10-point Deal Precision Calculator™</li>
+                        <li><span class="tick">✓</span> <strong>Priority Access:</strong> Deals hit your portal first — before platforms or agents.</li>
+                        <li><span class="tick">✓</span> <strong>Direct from Sellers:</strong> No agents. No markups. Just clear numbers.</li>
+                    </ul>
+
+                    <div style="margin-top: 2rem; border-top: 1px solid var(--border-light);">
+                         <div class="accordion-item">
+                            <button class="accordion-header" style="font-size: 0.9rem;">What Exactly Are Off-Market Deals? <span>+</span></button>
+                            <div class="accordion-content">
+                                <p>Properties not listed on Rightmove or Zoopla. Sourced directly from sellers and exclusive to our network.</p>
+                            </div>
+                        </div>
+                         <div class="accordion-item">
+                            <button class="accordion-header" style="font-size: 0.9rem;">Do I Need To Pay To Join? <span>+</span></button>
+                            <div class="accordion-content">
+                                <p>No — it’s completely FREE to join the OTC investor network.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="border-top: 4px solid var(--accent-primary);">
+                    <form onsubmit="event.preventDefault(); alert('Thank you. Your request has been submitted.');">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number *</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Target Location(s) *</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Preferred Investment Type *</label>
+                                <select required>
+                                    <option value="">Select...</option>
+                                    <option>Buy-to-Let</option>
+                                    <option>HMO</option>
+                                    <option>Below Market Value</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Budget Range *</label>
+                                <select required>
+                                    <option value="">Select...</option>
+                                    <option>£50k - £100k</option>
+                                    <option>£100k - £250k</option>
+                                    <option>£250k+</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Timeline to Purchase *</label>
+                                <select required>
+                                    <option value="">Select...</option>
+                                    <option>Immediate</option>
+                                    <option>1-3 Months</option>
+                                    <option>3+ Months</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Lead Source *</label>
+                                <select required>
+                                    <option value="">Select...</option>
+                                    <option>Google Search</option>
+                                    <option>Social Media</option>
+                                    <option>Referral</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Proof of Funds Available *</label>
+                                <input type="text" placeholder="e.g., Cash, Mortgage AIP" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Other Notes or Preferences</label>
+                                <textarea rows="3"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" required>
+                            <span>I Consent To Join The OTC Investor Network And Receive Deal Alerts. I Have Read And Agree To The Privacy Policy.</span>
+                        </div>
+
+                        <button type="submit" class="btn" style="width: 100%;">Unlock My Off-Market Deals</button>
+
+                        <p class="disclaimer-text">
+                            By signing up, you agree not to share, distribute, or attempt to contact any property owner or deal source directly. On The Curb reserves the right to deny further access to anyone violating our confidentiality process.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 3rem; font-size: 2rem;">CONTACT US</h2>
+            <div class="contact-wrap">
+                <form onsubmit="event.preventDefault(); alert('Message Sent');">
+                    <div class="form-group">
+                        <label>FULL NAME *</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>EMAIL ADDRESS *</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>PHONE NUMBER *</label>
+                        <input type="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <label>YOUR MESSAGE *</label>
+                        <textarea rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">SUBMIT ENQUIRY</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-flex">
+                <a href="#hero">Home</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#investor-access">Investor Access</a>
+                <a href="#contact">Contact Us</a>
+                <a href="#">Terms and Conditions</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="legal-copy">
+                <p style="margin-bottom: 2rem;">admin@onthecurbrealestate.co.uk | United Kingdom</p>
+                <p>&copy; 2025 On The Curb Real Estate Ltd. Registered in England and Wales.</p>
+                <p>Company No. 16392328.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // 1. Accordion Logic
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                
+                // Toggle current
+                item.classList.toggle('active');
+                
+                if(item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+
+        // 2. Three.js "Architectural Masterplan" Logic
+        (function() {
+            const container = document.getElementById('canvas-container');
+            const scene = new THREE.Scene();
+            
+            // BACKGROUND & FOG
+            // A seamless blend with the website body
+            scene.background = new THREE.Color(0x080808);
+            scene.fog = new THREE.Fog(0x080808, 5, 18); 
+
+            const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Softer, expensive looking shadows
+            container.appendChild(renderer.domElement);
+
+            // Group to hold our city
+            const cityGroup = new THREE.Group();
+            scene.add(cityGroup);
+
+            // --- LIGHTING (The "Golden Hour" look) ---
+            
+            // 1. Ambient: Soft blue-grey to mimic skylight shadows
+            const ambientLight = new THREE.AmbientLight(0x2c3e50, 1.5); 
+            scene.add(ambientLight);
+
+            // 2. Main Sun: Sharp, warm light for dramatic building shadows
+            const dirLight = new THREE.DirectionalLight(0xfff0dd, 2); 
+            dirLight.position.set(10, 12, 5);
+            dirLight.castShadow = true;
+            
+            // High res shadows for premium feel
+            dirLight.shadow.mapSize.width = 2048;
+            dirLight.shadow.mapSize.height = 2048;
+            dirLight.shadow.camera.near = 0.5;
+            dirLight.shadow.camera.far = 50;
+            scene.add(dirLight);
+
+            // 3. Accent Rim Light (The Brand Orange)
+            // Subtle back-lighting to separate buildings from the dark background
+            const spotLight = new THREE.SpotLight(0xe93f00, 5);
+            spotLight.position.set(-10, 5, -5);
+            spotLight.lookAt(0,0,0);
+            scene.add(spotLight);
+
+            // --- MATERIALS ---
+
+            // 1. Building Material: "Architectural Clay" / Graphite
+            // Solid, matte, trustworthy. Not transparent.
+            const buildMaterial = new THREE.MeshStandardMaterial({
+                color: 0x1a1a1a,     // Dark Graphite
+                roughness: 0.7,      // Matte finish (like concrete/clay)
+                metalness: 0.1,
+            });
+
+            // 2. The "Highlight" Material (Top of buildings)
+            // Adds a subtle sheen to the roofs, looking like a polished model
+            const roofMaterial = new THREE.MeshStandardMaterial({
+                color: 0x222222,
+                roughness: 0.2,
+                metalness: 0.1,
+            });
+
+            // 3. Structural Edges
+            // Thin, crisp lines. implies "Blueprints" and "Structure".
+            const edgeMaterial = new THREE.LineBasicMaterial({
+                color: 0x444444, 
+                transparent: true, 
+                opacity: 0.3
+            });
+
+            // --- ARCHITECTURE GENERATION ---
+            
+            const boxGeo = new THREE.BoxGeometry(1, 1, 1);
+            
+            // Generate a grid-like city layout (Structured, not random)
+            const gridSize = 6; 
+            const gap = 1.2; // Space between buildings (Roads)
+
+            for (let x = -gridSize; x <= gridSize; x++) {
+                for (let z = -gridSize; z <= gridSize; z++) {
+                    
+                    // Skip some spots to create "plazas" or negative space
+                    if (Math.random() > 0.7) continue;
+                    if (Math.abs(x) < 2 && Math.abs(z) < 2) continue; // Clear center for text visibility
+
+                    // Varied Heights, but controlled (Residential blocks vs Skyscrapers)
+                    // We keep them shorter to look like robust apartments/HMOs, not Burj Khalifa
+                    const height = Math.random() * 2 + 0.5; 
+                    
+                    const mesh = new THREE.Mesh(boxGeo, buildMaterial);
+                    
+                    // Position in a grid
+                    mesh.position.x = x * gap;
+                    mesh.position.z = z * gap;
+                    mesh.position.y = height / 2;
+                    
+                    // Scale width slightly to vary building footprint
+                    mesh.scale.set(0.8 + Math.random()*0.2, height, 0.8 + Math.random()*0.2);
+
+                    mesh.castShadow = true;
+                    mesh.receiveShadow = true;
+                    cityGroup.add(mesh);
+
+                    // Add Roof Cap (Polished look)
+                    const roof = new THREE.Mesh(boxGeo, roofMaterial);
+                    roof.position.copy(mesh.position);
+                    roof.position.y = height + 0.01; // Sit just on top
+                    roof.scale.set(mesh.scale.x, 0.02, mesh.scale.z);
+                    roof.receiveShadow = true;
+                    cityGroup.add(roof);
+
+                    // Add Edges (The "Blueprint" look)
+                    const edges = new THREE.EdgesGeometry(new THREE.BoxGeometry(mesh.scale.x, height, mesh.scale.z));
+                    const line = new THREE.LineSegments(edges, edgeMaterial);
+                    line.position.copy(mesh.position);
+                    cityGroup.add(line);
+                }
+            }
+
+            // --- THE GROUND PLANE (The "Plot") ---
+            
+            // 1. Solid Floor
+            const planeGeometry = new THREE.PlaneGeometry(60, 60);
+            const planeMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x080808,
+                roughness: 1,
+                metalness: 0
+            });
+            const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+            plane.rotation.x = -Math.PI / 2;
+            plane.receiveShadow = true;
+            cityGroup.add(plane);
+
+            // 2. The Grid (Crucial for "Land/Property" vibe)
+            // This implies measurement and defined boundaries.
+            const gridHelper = new THREE.GridHelper(60, 60, 0x333333, 0x111111);
+            gridHelper.position.y = 0.01;
+            cityGroup.add(gridHelper);
+
+            // CAMERA POSITION
+            // Lower angle, looking up slightly (Majestic)
+            camera.position.set(0, 4, 12); 
+            camera.lookAt(0, 0, 0);
+
+            // MOUSE INTERACTION (Subtle Parallax only)
+            // We reduced the movement intensity to make it feel "Heavy" and "Stable"
+            let mouseX = 0;
+            let mouseY = 0;
+            const windowHalfX = window.innerWidth / 2;
+            const windowHalfY = window.innerHeight / 2;
+
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX - windowHalfX);
+                mouseY = (event.clientY - windowHalfY);
+            });
+
+            // ANIMATION LOOP
+            const clock = new THREE.Clock();
+
+            function animate() {
+                requestAnimationFrame(animate);
+                const elapsedTime = clock.getElapsedTime();
+
+                // Very Slow, stately rotation.
+                // Speed = 0.02 (Previously was faster).
+                cityGroup.rotation.y = elapsedTime * 0.02; 
+
+                // Subtle Mouse Influence
+                // Instead of moving the whole city, we just slightly shift the camera
+                // to give depth without losing the "solid" feel.
+                camera.position.x += (mouseX * 0.001 - camera.position.x) * 0.05;
+                camera.position.y += ( -(mouseY * 0.001) + 4 - camera.position.y) * 0.05;
+                camera.lookAt(0, 1, 0);
+
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+            // HANDLE RESIZE
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        })();
+    </script>
+</body>
+</html>
