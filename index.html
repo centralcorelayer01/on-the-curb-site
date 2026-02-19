@@ -567,6 +567,7 @@
             font-weight: 500;
             font-size: 0.9rem;
             transition: 0.3s;
+            cursor: pointer;
         }
 
         .footer-flex a:hover { color: var(--accent-primary); }
@@ -581,6 +582,140 @@
         .legal-copy p {
             margin: 0 auto;
             max-width: 100%;
+        }
+
+        /* * MODAL OVERLAYS */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--bg-surface);
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            z-index: 10;
+        }
+
+        .modal-header h3 {
+            margin-bottom: 0;
+            font-size: 1.5rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .modal-close:hover {
+            color: var(--accent-primary);
+        }
+
+        .modal-body {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal-body h4 {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body h4:first-child {
+            margin-top: 0;
+        }
+        
+        .modal-body h5 {
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body p, .modal-body li {
+            color: var(--text-muted);
+            max-width: 65ch;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .modal-body ul {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            list-style-type: disc;
+        }
+
+        .modal-body a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+        
+        .modal-body a:hover {
+            text-decoration: underline;
+        }
+
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: flex-end;
+            position: sticky;
+            bottom: 0;
+            background: var(--bg-surface);
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+            z-index: 10;
         }
 
         /* NEW PYRAMID LOGIC FOR HALVED SCREEN (Targeting ~1024px) */
@@ -622,6 +757,10 @@
             .feature-card, .feature-card:first-child {
                 flex: 1 1 100%;
                 max-width: 100%;
+            }
+            
+            .modal-header, .modal-body, .modal-footer {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -934,8 +1073,8 @@
                 <a href="#how-it-works">How It Works</a>
                 <a href="#investor-access">Investor Access</a>
                 <a href="#contact">Contact Us</a>
-                <a href="#">Terms and Conditions</a>
-                <a href="#">Privacy Policy</a>
+                <a href="#" onclick="event.preventDefault(); openModal('modal-terms');">Terms and Conditions</a>
+                <a href="#" onclick="event.preventDefault(); openModal('modal-privacy');">Privacy Policy</a>
             </div>
             <div class="legal-copy">
                 <p style="margin-bottom: 2rem;">admin@onthecurbrealestate.co.uk | United Kingdom</p>
@@ -944,6 +1083,227 @@
             </div>
         </div>
     </footer>
+
+    <div class="modal-overlay" id="modal-privacy">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Privacy Policy</h3>
+                <button class="modal-close" onclick="closeModal('modal-privacy')">CLOSE ✕</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Effective Date:</strong> 31/05/25</p>
+                
+                <h4>1. Introduction</h4>
+                <p>On The Curb Real Estate Ltd ("OTC," "we," "us," or "our") respects your privacy and is committed to protecting your personal data. This Privacy Policy describes how we collect, use, disclose, and protect your information when you interact with our services, website, lead magnets, and associated platforms.</p>
+                
+                <h4>2. Personal Data We Collect</h4>
+                <ul>
+                    <li><strong>Identity Data:</strong> Name, username, or similar identifiers.</li>
+                    <li><strong>Contact Data:</strong> Email address, telephone numbers, and mailing address.</li>
+                    <li><strong>Financial Data:</strong> Payment-related information (only where relevant to transactions).</li>
+                    <li><strong>Technical Data:</strong> IP address, browser type, device data, and usage behaviour.</li>
+                    <li><strong>Usage Data:</strong> Information about how you use our website, services, downloads, and communications.</li>
+                    <li><strong>Marketing & Communications Data:</strong> Your preferences in receiving marketing from us.</li>
+                </ul>
+
+                <h4>3. How We Collect Your Data</h4>
+                <ul>
+                    <li><strong>Direct Interactions:</strong> Completing forms (e.g., investor intake, seller intake, referral forms, lead magnet downloads), email correspondence, or by phone.</li>
+                    <li><strong>Automated Technologies:</strong> Via cookies and similar tracking technologies on our website.</li>
+                    <li><strong>Third Parties/Public Sources:</strong> Analytics providers, advertising networks, and data partners.</li>
+                </ul>
+
+                <h4>4. Our Use Your Personal Data</h4>
+                <ul>
+                    <li>To deliver services and respond to enquiries.</li>
+                    <li>To manage investor and seller relationships.</li>
+                    <li>To provide downloadable educational materials (e.g., the OTC Buy-to-Let Wealth Builder Blueprint™).</li>
+                    <li>For onboarding, follow-up, and marketing (where consent has been given).</li>
+                    <li>For legal and compliance requirements.</li>
+                    <li>For legitimate business interests, where your rights do not override those interests.</li>
+                </ul>
+
+                <h4>5. Legal Basis for Processing</h4>
+                <ul>
+                    <li><strong>Consent:</strong> Where you've given permission.</li>
+                    <li><strong>Contract:</strong> Where necessary to perform a contract with you.</li>
+                    <li><strong>Legal Obligation:</strong> To comply with laws or regulations.</li>
+                    <li><strong>Legitimate Interest:</strong> For business operations like marketing, analysis, and communication.</li>
+                </ul>
+
+                <h4>6. Disclosure of Your Personal Data</h4>
+                <ul>
+                    <li>Service providers performing functions on our behalf (e.g., email platforms, CRM tools).</li>
+                    <li>Legal, tax, or professional advisors.</li>
+                    <li>Regulatory bodies, where required.</li>
+                    <li>Parties involved in a business transfer or reorganisation.</li>
+                </ul>
+
+                <h4>7. International Transfers</h4>
+                <p>Some of your data may be transferred outside the UK or EEA. Where this happens, we use legal safeguards such as Standard Contractual Clauses to ensure appropriate data protection.</p>
+
+                <h4>8. Data Security</h4>
+                <p>We use technical and organisational measures to protect your data against unauthorised access, misuse, loss, or destruction.</p>
+
+                <h4>9. Data Retention</h4>
+                <p>We retain your personal data only as long as necessary for the purposes it was collected, including legal or operational requirements.</p>
+
+                <h4>10. Your Data Protection Rights</h4>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Request access, correction, or deletion of your personal data.</li>
+                    <li>Object to or restrict processing.</li>
+                    <li>Request data portability.</li>
+                    <li>Withdraw consent at any time.</li>
+                </ul>
+                <p>To exercise your rights, contact us at <a href="mailto:admin@onthecurbrealestate.co.uk">admin@onthecurbrealestate.co.uk</a>.</p>
+
+                <h4>11. Cookies and Tracking Technologies</h4>
+                <p>We use cookies to enhance user experience, track website usage, and improve our marketing. You can manage your cookie preferences via your browser settings.</p>
+
+                <h4>12. Educational Materials & Lead Magnet Data</h4>
+                <p>All downloadable materials (including the OTC Buy-to-Let Wealth Builder Blueprint™ and Off-Market Deal Access Form) are provided strictly for educational and informational purposes. These do not constitute financial, investment, or legal advice.</p>
+                <p>Data collected during downloads (e.g., name, email, metadata) is stored securely and used to follow up with relevant resources, communications, and onboarding.</p>
+
+                <h4>13. External Hosting and Third-Party Links</h4>
+                <p>Some content (e.g., downloadable PDFs) is hosted via secure third-party platforms such as Google Drive. When you access these materials, you may be redirected. We are not responsible for the privacy practices of those external services.</p>
+                <p>Our website may also contain links to external websites – we are not responsible for their content or privacy policies.</p>
+
+                <h4>14. No Financial Advice</h4>
+                <p>On The Curb Real Estate Ltd does not provide regulated financial advice. All communications, documents, and recommendations are for general educational purposes only. Investors should conduct their own due diligence or consult independent professionals before making decisions.</p>
+
+                <h4>15. Not a Property Management Company</h4>
+                <p>On The Curb Real Estate Ltd does not operate as a property management company. We do not offer rent collection, tenant placement, maintenance, or day-to-day property services. Our role is strictly limited to sourcing and packaging property investment opportunities.</p>
+
+                <h4>16. Referral Programme</h4>
+                <p>When you use our referral form, we collect basic details about you and the person you're referring to track the referral and issue rewards. This includes names, contact info, and status updates.</p>
+                <p>We only use this data to verify referrals, communicate updates, and prevent misuse. Referral info is stored securely. You must have the referred person's permission before submitting.</p>
+                <p>We won’t send them marketing unless they opt in directly.</p>
+
+                <h4>17. Complaints</h4>
+                <p>If you have concerns about how we handle your personal data, please contact us first at <a href="mailto:admin@onthecurbrealestate.co.uk">admin@onthecurbrealestate.co.uk</a>. Include your name, contact details, and a clear description of the issue.</p>
+                <p>We aim to acknowledge your complaint within 5 working days and provide a full response within 28 days.</p>
+                <p>If you are not satisfied with our response, you have the right to lodge a complaint with the UK Information Commissioner’s Office (ICO):</p>
+                <ul>
+                    <li><strong>Website:</strong> <a href="https://www.ico.org.uk" target="_blank" rel="noopener">www.ico.org.uk</a></li>
+                    <li><strong>Telephone:</strong> 0303 123 1113</li>
+                    <li><strong>Address:</strong> Information Commissioner's Office, Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF</li>
+                </ul>
+
+                <h4>18. Changes to this Privacy Policy</h4>
+                <p>We may update this policy periodically. Changes will be posted on our website or sent via email where required.</p>
+
+                <h4>19. Contact Information</h4>
+                <ul>
+                    <li><strong>Business Name:</strong> On The Curb Real Estate Ltd</li>
+                    <li><strong>Email:</strong> <a href="mailto:admin@onthecurbrealestate.co.uk">admin@onthecurbrealestate.co.uk</a></li>
+                    <li><strong>Registered Location:</strong> London, United Kingdom</li>
+                    <li><strong>Company Number:</strong> 16392328</li>
+                </ul>
+                <h5>Regulatory Compliance</h5>
+                <ul>
+                    <li><strong>ICO Registration Number:</strong> ZB895054</li>
+                    <li><strong>Property Redress Scheme (PRS) Number:</strong> PRS051813</li>
+                    <li><strong>MLR Registration Number:</strong> XSML00000209159 (Application Pending – Trading Permitted)</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('modal-privacy')">I Understand</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-terms">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Terms and Conditions</h3>
+                <button class="modal-close" onclick="closeModal('modal-terms')">CLOSE ✕</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Effective Date:</strong> 15/04/2025</p>
+
+                <h4>1. Introduction</h4>
+                <p>Welcome to On The Curb Real Estate Ltd (“we”, “us”, or “our”). These Terms and Conditions govern your use of our website and our property sourcing services. By accessing or using our site, you agree to be bound by these terms.</p>
+
+                <h4>2. Service Description</h4>
+                <p>On The Curb Real Estate Ltd is a UK-based property sourcing company. We connect investors with off-market and on-market property opportunities. We do not buy or sell properties ourselves, nor do we act as estate agents or financial advisors. Our role is limited to the introduction of opportunities and facilitation of communication between buyers and sellers.</p>
+
+                <h4>3. No Financial Advice</h4>
+                <p>We do not provide financial, legal, tax, or investment advice. Any information provided on our site or in our deal packs is for informational purposes only. You should conduct your own due diligence and seek professional advice before making any investment decision.</p>
+
+                <h4>4. Use of Website</h4>
+                <p>You agree to use our website only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit the use and enjoyment of the site by anyone else.</p>
+
+                <h4>5. Fees and Payment</h4>
+                <p>All fees for sourcing services will be outlined in a Sourcing Agreement or Assignment Agreement signed between On The Curb Real Estate Ltd and the investor. Fees are non-refundable unless otherwise agreed in writing.</p>
+
+                <h4>6. Non-Circumvention</h4>
+                <p>By receiving property information from us, you agree not to bypass or attempt to bypass us to deal directly with the vendor, agent, or any third party we introduced. If circumvention occurs, we reserve the right to seek damages and our full sourcing fee.</p>
+
+                <h4>7. Intellectual Property</h4>
+                <p>All content on our website – including text, images, logos, and deal materials – is the property of On The Curb Real Estate Ltd and may not be copied, reproduced, or reused without our written consent.</p>
+
+                <h4>8. Limitation of Liability</h4>
+                <p>We are not liable for any loss or damage arising from your use of our services or reliance on any property information we provide. All property investments carry risk and returns are not guaranteed.</p>
+
+                <h4>9. Third-Party Links</h4>
+                <p>Our website may contain links to third-party websites. We are not responsible for the content, accuracy, or privacy practices of these websites.</p>
+
+                <h4>10. Regulatory Information</h4>
+                <ul>
+                    <li><strong>ICO Registration Number:</strong> ZB895054</li>
+                    <li><strong>Property Redress Scheme (PRS) Membership Number:</strong> PRS051813</li>
+                    <li><strong>MLR Registration Number:</strong> XSML00000209159 (Application Pending – Trading Permitted)</li>
+                    <li><strong>Company Number:</strong> 16392328 (Registered in England and Wales)</li>
+                </ul>
+
+                <h4>11. Governing Law</h4>
+                <p>These Terms and Conditions are governed by and construed in accordance with the laws of England and Wales. Any disputes arising in connection with these terms shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+                <h4>12. Changes to Terms</h4>
+                <p>We reserve the right to modify these Terms and Conditions at any time. Updated versions will be posted on our website with a revised effective date.</p>
+
+                <h4>13. Contact Us</h4>
+                <p>If you have any questions about these Terms and Conditions, please contact us at: <a href="mailto:admin@onthecurbrealestate.co.uk">admin@onthecurbrealestate.co.uk</a></p>
+
+                <h4>14. Complaints Procedure</h4>
+                <p>We are committed to delivering a high standard of service. If you are dissatisfied with any aspect of your experience, please let us know so we can put things right and improve.</p>
+                
+                <h5>How to Complain:</h5>
+                <p>Send your complaint in writing by email to: <a href="mailto:admin@onthecurbrealestate.co.uk">admin@onthecurbrealestate.co.uk</a></p>
+                <p>Please include:</p>
+                <ul>
+                    <li>Your name and contact details</li>
+                    <li>A clear description of the issue</li>
+                    <li>What outcome you are seeking</li>
+                </ul>
+                
+                <h5>Our Process:</h5>
+                <ul>
+                    <li>We will acknowledge your complaint within 3 working days</li>
+                    <li>Your complaint will be reviewed by Dawud Saleem (Director)</li>
+                    <li>A full written response will be provided within 15 working days</li>
+                    <li>If further time is needed, we will keep you updated throughout</li>
+                </ul>
+                
+                <h5>Escalating to the Property Redress Scheme:</h5>
+                <p>If you are not satisfied with our final response, or if 8 weeks have passed since your initial complaint, you may refer the matter to our redress scheme:</p>
+                <p><strong>The Property Redress Scheme (PRS)</strong></p>
+                <ul>
+                    <li><strong>Website:</strong> <a href="https://www.theprs.co.uk">www.theprs.co.uk</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:complaints@theprs.co.uk">complaints@theprs.co.uk</a></li>
+                    <li><strong>Phone:</strong> 0333 321 9418</li>
+                    <li><strong>Post:</strong> Property Redress Scheme, Premiere House, Elstree Way, Borehamwood, WD6 1JH</li>
+                </ul>
+                
+                <h5>Record Keeping:</h5>
+                <p>We retain a written record of all complaints and responses for a minimum of 6 years in line with regulatory guidance.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('modal-terms')">I Understand</button>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -1101,6 +1461,26 @@
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
         })();
+
+        // 3. Modal Logic
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = ''; // Restore background scrolling
+        }
+
+        // Close modal when clicking the semi-transparent overlay outside the card
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if(e.target === this) {
+                    closeModal(this.id);
+                }
+            });
+        });
     </script>
 </body>
 </html>
