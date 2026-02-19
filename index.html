@@ -249,7 +249,7 @@
         
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--spacing-md);
             margin-bottom: var(--spacing-lg);
         }
@@ -441,28 +441,9 @@
             border-left: 3px solid var(--accent-primary);
             padding-left: 1.5rem;
             margin: 2rem 0;
-            font-style: normal;
-            color: #ffffff;
-            font-size: 1.2rem;
-            font-weight: 500;
-            line-height: 1.6;
-        }
-        
-        .quote-author {
-            display: block;
-            margin-top: 1.5rem;
-            color: #ffffff;
-            font-size: 0.95rem;
-        }
-
-        .quote-author strong {
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-        }
-
-        .quote-author span {
-            font-weight: 400;
+            font-style: italic;
+            color: #fff;
+            font-size: 1.1rem;
         }
 
         .access-list li {
@@ -600,17 +581,6 @@
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .feature-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .feature-card:nth-child(1) {
-                grid-column: span 2;
-                max-width: calc(50% - 1rem); /* Keeps top block the identical width of bottom blocks */
-                margin: 0 auto;
-            }
-        }
-
         @media (max-width: 900px) {
             .hiw-layout, .split-layout { grid-template-columns: 1fr; }
             .sidebar-card { position: relative; top: 0; margin-bottom: 2rem; }
@@ -622,14 +592,6 @@
             .form-grid { grid-template-columns: 1fr; }
             .form-group.full-width { grid-column: span 1; }
             .footer-flex { gap: 1rem; flex-direction: column; }
-            
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-            .feature-card:nth-child(1) {
-                grid-column: span 1;
-                max-width: 100%;
-            }
         }
     </style>
 </head>
@@ -655,17 +617,11 @@
         <div class="hero-overlay"></div> 
 
         <div class="container hero-content">
-            <div class="hero-bubbles">
-                <div class="bubble-item"><span class="bubble-dot"></span> Regulated Framework</div>
-                <div class="bubble-item"><span class="bubble-dot"></span> Solicitor-Led</div>
-                <div class="bubble-item"><span class="bubble-dot"></span> 200+ Deals</div>
-            </div>
             
             <h1>Investor-Ready Opportunities.<br><span class="text-accent">Fully Packaged. Structured.</span></h1>
-            <p style="margin: 0 auto 2rem;">Access to professionally structured UK investment property. We provide opportunities from sourcing to operation-ready, prioritising structure, documentation, and disciplined progression.</p>
+            <p style="margin: 0 auto 2rem; color: #ffffff;">Access to professionally structured UK investment property. We provide opportunities from sourcing to operation-ready, prioritising structure, documentation, and disciplined progression.</p>
             
             <a href="#investor-access" class="btn">Request Investor Access</a>
-            <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">Takes under 30 seconds • 100% Free</div>
         </div>
     </section>
 
@@ -798,15 +754,13 @@
         <div class="container">
             <div class="split-layout">
                 <div class="left-content">
-                    <div class="bubble-pill" style="margin-bottom: 1.5rem;">Off-Market Access</div>
-                    
-                    <h1>Access 200+ Off-Market Deals</h1>
+                    <div style="text-align: center;">
+                        <div class="bubble-pill" style="margin-bottom: 1.5rem;">Off-Market Access</div>
+                    </div>
                     
                     <div class="quote">
-                        Bridging The Gap Between Sellers And Investors By Unlocking Value In Every Property.
-                        <div class="quote-author">
-                            <strong>SAAD ESSA</strong> | <span>CEO of On The Curb Real Estate LTD</span>
-                        </div>
+                        "90% of all millionaires become so through owning real estate."
+                        <br><span style="font-size: 0.9rem; color: var(--text-muted); font-style: normal; margin-top: 10px; display: block;">— Andrew Carnegie</span>
                     </div>
 
                     <h4 class="text-accent" style="margin-top: 2rem; margin-bottom: 1rem;">Why Investors Join Us</h4>
@@ -1145,8 +1099,8 @@
                 const elapsedTime = clock.getElapsedTime();
 
                 // Very Slow, stately rotation.
-                // Speed = 0.02 (Previously was faster).
-                cityGroup.rotation.y = elapsedTime * 0.02; 
+                // Speed = 0.01 (Reduced from 0.015).
+                cityGroup.rotation.y = elapsedTime * 0.01; 
 
                 // Subtle Mouse Influence
                 // Instead of moving the whole city, we just slightly shift the camera
