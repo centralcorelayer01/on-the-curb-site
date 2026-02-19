@@ -527,6 +527,34 @@
             margin: 0 auto;
         }
 
+        /* * LOGO PLACEHOLDER (BACK TO TOP) */
+        .logo-placeholder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 250px;
+            height: 100px;
+            margin: 0 auto 4rem auto;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            background: var(--bg-surface);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .logo-placeholder:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-2px);
+            color: var(--accent-primary);
+        }
+
         /* * FOOTER */
         footer {
             padding: 4rem 0 3rem; 
@@ -1042,14 +1070,6 @@
         </div>
     </section>
 
-    <section id="reviews">
-        <div class="container">
-            <h2>Professional Feedback</h2>
-            <p style="margin: 0 auto 1rem;">Verified Google reviews from investors and partners.</p>
-            <a href="https://share.google/xeY9iIqZwuwIy8ORl" target="_blank" rel="noopener noreferrer" class="text-accent" style="font-weight: 600;">Leave or View all reviews on Google</a>
-        </div>
-    </section>
-
     <section id="contact">
         <div class="container">
             <img src="logo.png" alt="OTC Glowing Logo" class="glowing-logo">
@@ -1078,6 +1098,18 @@
             </div>
         </div>
     </section>
+
+    <section id="reviews">
+        <div class="container">
+            <h2>Professional Feedback</h2>
+            <p style="margin: 0 auto 1rem;">Verified Google reviews from investors and partners.</p>
+            <a href="https://share.google/xeY9iIqZwuwIy8ORl" target="_blank" rel="noopener noreferrer" class="text-accent" style="font-weight: 600;">Leave or View all reviews on Google</a>
+        </div>
+    </section>
+
+    <a href="#hero" class="logo-placeholder">
+        OTC Logo Asset
+    </a>
 
     <footer>
         <div class="container">
