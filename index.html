@@ -617,17 +617,11 @@
         <div class="hero-overlay"></div> 
 
         <div class="container hero-content">
-            <div class="hero-bubbles">
-                <div class="bubble-item"><span class="bubble-dot"></span> Regulated Framework</div>
-                <div class="bubble-item"><span class="bubble-dot"></span> Solicitor-Led</div>
-                <div class="bubble-item"><span class="bubble-dot"></span> 200+ Deals</div>
-            </div>
             
             <h1>Investor-Ready Opportunities.<br><span class="text-accent">Fully Packaged. Structured.</span></h1>
-            <p style="margin: 0 auto 2rem;">Access to professionally structured UK investment property. We provide opportunities from sourcing to operation-ready, prioritising structure, documentation, and disciplined progression.</p>
+            <p style="margin: 0 auto 2rem; color: #ffffff;">Access to professionally structured UK investment property. We provide opportunities from sourcing to operation-ready, prioritising structure, documentation, and disciplined progression.</p>
             
             <a href="#investor-access" class="btn">Request Investor Access</a>
-            <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">Takes under 30 seconds • 100% Free</div>
         </div>
     </section>
 
@@ -1105,8 +1099,8 @@
                 const elapsedTime = clock.getElapsedTime();
 
                 // Very Slow, stately rotation.
-                // Speed = 0.02 (Previously was faster).
-                cityGroup.rotation.y = elapsedTime * 0.02; 
+                // Speed = 0.015 (Reduced from 0.02).
+                cityGroup.rotation.y = elapsedTime * 0.015; 
 
                 // Subtle Mouse Influence
                 // Instead of moving the whole city, we just slightly shift the camera
