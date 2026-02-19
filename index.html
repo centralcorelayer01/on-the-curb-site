@@ -583,6 +583,18 @@
         }
 
         /* Responsive */
+        @media (max-width: 950px) {
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .feature-card:first-child {
+                grid-column: 1 / -1;
+                justify-self: center;
+                /* Matches the width of the bottom cards perfectly minus the gap space */
+                width: calc(50% - (var(--spacing-md) / 2));
+            }
+        }
+
         @media (max-width: 900px) {
             .hiw-layout, .split-layout { grid-template-columns: 1fr; }
             .sidebar-card { position: relative; top: 0; margin-bottom: 2rem; }
@@ -594,6 +606,16 @@
             .form-grid { grid-template-columns: 1fr; }
             .form-group.full-width { grid-column: span 1; }
             .footer-flex { gap: 1rem; flex-direction: column; }
+            
+            /* Revert feature pyramid back to vertical stack on true mobile to prevent squishing */
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .feature-card:first-child {
+                grid-column: auto;
+                justify-self: stretch;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -658,7 +680,7 @@
     <section id="clarity">
         <div class="container">
             <div style="max-width: 800px; margin: 0 auto;">
-                <h2 style="margin-bottom: 2rem;">Process & Structure Clarity</h2>
+                <h2 class="text-center" style="margin-bottom: 2rem;">Process & Structure Clarity</h2>
                 <div class="accordion-container">
                     <div class="accordion-item">
                         <button class="accordion-header">How does access work? <span>+</span></button>
@@ -697,7 +719,7 @@
 
     <section id="how-it-works">
         <div class="container">
-            <h2 style="margin-bottom: 3rem;">How It Works</h2>
+            <h2 class="text-center" style="margin-bottom: 3rem;">How It Works</h2>
             <div class="hiw-layout">
                 <aside class="sidebar-card">
                     <h3 class="text-accent" style="margin-bottom: 1.5rem;">Fully Compliant.<br>Professionally Run.</h3>
