@@ -247,9 +247,10 @@
         
         .why-intro { max-width: 800px; margin: 0 auto var(--spacing-lg); text-align: center; }
         
+        /* Default Desktop Grid (3 columns) */
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: var(--spacing-md);
             margin-bottom: var(--spacing-lg);
         }
@@ -582,19 +583,28 @@
             max-width: 100%;
         }
 
-        /* Responsive */
-        @media (max-width: 950px) {
+        /* NEW PYRAMID LOGIC FOR HALVED SCREEN (Targeting ~1024px) */
+        @media (max-width: 1024px) {
             .feature-grid {
-                grid-template-columns: 1fr 1fr;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: var(--spacing-md);
+            }
+            .feature-card {
+                /* Set standard width for the cards */
+                flex: 0 1 calc(50% - var(--spacing-md));
             }
             .feature-card:first-child {
-                grid-column: 1 / -1;
-                justify-self: center;
-                /* Matches the width of the bottom cards perfectly minus the gap space */
-                width: calc(50% - (var(--spacing-md) / 2));
+                /* Force the first card to be 100% of the container to create the pyramid top */
+                flex: 0 1 100%;
+                /* Align the actual card box to the center of that 100% space */
+                max-width: calc(50% - var(--spacing-md));
+                margin: 0 auto;
             }
         }
 
+        /* RESPONSIVE LAYOUTS */
         @media (max-width: 900px) {
             .hiw-layout, .split-layout { grid-template-columns: 1fr; }
             .sidebar-card { position: relative; top: 0; margin-bottom: 2rem; }
@@ -607,14 +617,11 @@
             .form-group.full-width { grid-column: span 1; }
             .footer-flex { gap: 1rem; flex-direction: column; }
             
-            /* Revert feature pyramid back to vertical stack on true mobile to prevent squishing */
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-            .feature-card:first-child {
-                grid-column: auto;
-                justify-self: stretch;
-                width: 100%;
+            /* Revert to single stack for mobile */
+            .feature-grid { flex-direction: column; }
+            .feature-card, .feature-card:first-child {
+                flex: 1 1 100%;
+                max-width: 100%;
             }
         }
     </style>
@@ -964,7 +971,6 @@
             const scene = new THREE.Scene();
             
             // BACKGROUND & FOG
-            // A seamless blend with the website body
             scene.background = new THREE.Color(0x080808);
             scene.fog = new THREE.Fog(0x080808, 5, 18); 
 
@@ -973,106 +979,73 @@
             
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.shadowMap.enabled = true;
-            renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Softer, expensive looking shadows
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap; 
             container.appendChild(renderer.domElement);
 
-            // Group to hold our city
             const cityGroup = new THREE.Group();
             scene.add(cityGroup);
 
-            // --- LIGHTING (The "Golden Hour" look) ---
-            
-            // 1. Ambient: Soft blue-grey to mimic skylight shadows
             const ambientLight = new THREE.AmbientLight(0x2c3e50, 1.5); 
             scene.add(ambientLight);
 
-            // 2. Main Sun: Sharp, warm light for dramatic building shadows
             const dirLight = new THREE.DirectionalLight(0xfff0dd, 2); 
             dirLight.position.set(10, 12, 5);
             dirLight.castShadow = true;
-            
-            // High res shadows for premium feel
             dirLight.shadow.mapSize.width = 2048;
             dirLight.shadow.mapSize.height = 2048;
             dirLight.shadow.camera.near = 0.5;
             dirLight.shadow.camera.far = 50;
             scene.add(dirLight);
 
-            // 3. Accent Rim Light (The Brand Orange)
-            // Subtle back-lighting to separate buildings from the dark background
             const spotLight = new THREE.SpotLight(0xe93f00, 5);
             spotLight.position.set(-10, 5, -5);
             spotLight.lookAt(0,0,0);
             scene.add(spotLight);
 
-            // --- MATERIALS ---
-
-            // 1. Building Material: "Architectural Clay" / Graphite
-            // Solid, matte, trustworthy. Not transparent.
             const buildMaterial = new THREE.MeshStandardMaterial({
-                color: 0x1a1a1a,     // Dark Graphite
-                roughness: 0.7,      // Matte finish (like concrete/clay)
+                color: 0x1a1a1a,
+                roughness: 0.7,
                 metalness: 0.1,
             });
 
-            // 2. The "Highlight" Material (Top of buildings)
-            // Adds a subtle sheen to the roofs, looking like a polished model
             const roofMaterial = new THREE.MeshStandardMaterial({
                 color: 0x222222,
                 roughness: 0.2,
                 metalness: 0.1,
             });
 
-            // 3. Structural Edges
-            // Thin, crisp lines. implies "Blueprints" and "Structure".
             const edgeMaterial = new THREE.LineBasicMaterial({
                 color: 0x444444, 
                 transparent: true, 
                 opacity: 0.3
             });
 
-            // --- ARCHITECTURE GENERATION ---
-            
             const boxGeo = new THREE.BoxGeometry(1, 1, 1);
-            
-            // Generate a grid-like city layout (Structured, not random)
             const gridSize = 6; 
-            const gap = 1.2; // Space between buildings (Roads)
+            const gap = 1.2; 
 
             for (let x = -gridSize; x <= gridSize; x++) {
                 for (let z = -gridSize; z <= gridSize; z++) {
-                    
-                    // Skip some spots to create "plazas" or negative space
                     if (Math.random() > 0.7) continue;
-                    if (Math.abs(x) < 2 && Math.abs(z) < 2) continue; // Clear center for text visibility
+                    if (Math.abs(x) < 2 && Math.abs(z) < 2) continue; 
 
-                    // Varied Heights, but controlled (Residential blocks vs Skyscrapers)
-                    // We keep them shorter to look like robust apartments/HMOs, not Burj Khalifa
                     const height = Math.random() * 2 + 0.5; 
-                    
                     const mesh = new THREE.Mesh(boxGeo, buildMaterial);
-                    
-                    // Position in a grid
                     mesh.position.x = x * gap;
                     mesh.position.z = z * gap;
                     mesh.position.y = height / 2;
-                    
-                    // Scale width slightly to vary building footprint
                     mesh.scale.set(0.8 + Math.random()*0.2, height, 0.8 + Math.random()*0.2);
-
                     mesh.castShadow = true;
                     mesh.receiveShadow = true;
                     cityGroup.add(mesh);
 
-                    // Add Roof Cap (Polished look)
                     const roof = new THREE.Mesh(boxGeo, roofMaterial);
                     roof.position.copy(mesh.position);
-                    roof.position.y = height + 0.01; // Sit just on top
+                    roof.position.y = height + 0.01; 
                     roof.scale.set(mesh.scale.x, 0.02, mesh.scale.z);
                     roof.receiveShadow = true;
                     cityGroup.add(roof);
 
-                    // Add Edges (The "Blueprint" look)
                     const edges = new THREE.EdgesGeometry(new THREE.BoxGeometry(mesh.scale.x, height, mesh.scale.z));
                     const line = new THREE.LineSegments(edges, edgeMaterial);
                     line.position.copy(mesh.position);
@@ -1080,9 +1053,6 @@
                 }
             }
 
-            // --- THE GROUND PLANE (The "Plot") ---
-            
-            // 1. Solid Floor
             const planeGeometry = new THREE.PlaneGeometry(60, 60);
             const planeMaterial = new THREE.MeshStandardMaterial({ 
                 color: 0x080808,
@@ -1094,19 +1064,13 @@
             plane.receiveShadow = true;
             cityGroup.add(plane);
 
-            // 2. The Grid (Crucial for "Land/Property" vibe)
-            // This implies measurement and defined boundaries.
             const gridHelper = new THREE.GridHelper(60, 60, 0x333333, 0x111111);
             gridHelper.position.y = 0.01;
             cityGroup.add(gridHelper);
 
-            // CAMERA POSITION
-            // Lower angle, looking up slightly (Majestic)
             camera.position.set(0, 4, 12); 
             camera.lookAt(0, 0, 0);
 
-            // MOUSE INTERACTION (Subtle Parallax only)
-            // We reduced the movement intensity to make it feel "Heavy" and "Stable"
             let mouseX = 0;
             let mouseY = 0;
             const windowHalfX = window.innerWidth / 2;
@@ -1117,30 +1081,20 @@
                 mouseY = (event.clientY - windowHalfY);
             });
 
-            // ANIMATION LOOP
             const clock = new THREE.Clock();
 
             function animate() {
                 requestAnimationFrame(animate);
                 const elapsedTime = clock.getElapsedTime();
-
-                // Very Slow, stately rotation.
-                // Speed = 0.01 (Reduced from 0.015).
                 cityGroup.rotation.y = elapsedTime * 0.01; 
-
-                // Subtle Mouse Influence
-                // Instead of moving the whole city, we just slightly shift the camera
-                // to give depth without losing the "solid" feel.
                 camera.position.x += (mouseX * 0.001 - camera.position.x) * 0.05;
                 camera.position.y += ( -(mouseY * 0.001) + 4 - camera.position.y) * 0.05;
                 camera.lookAt(0, 1, 0);
-
                 renderer.render(scene, camera);
             }
 
             animate();
 
-            // HANDLE RESIZE
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
