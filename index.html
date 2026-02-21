@@ -139,8 +139,15 @@
             right: 30px;
             z-index: 1000;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            padding: 0.8rem 1.5rem;
+            padding: 0.6rem 1.2rem; /* Reduced size */
             font-size: 0.8rem;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .floating-cta.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
         /* * HEADER */
@@ -242,7 +249,7 @@
 
         /* --- SHARED LOGO STYLING --- */
         .glow-logo {
-            width: 112px;
+            width: 84px; /* Reduced by ~25% from 112px */
             display: block;
             transition: transform 0.3s ease, filter 0.3s ease;
             filter: drop-shadow(0 0 0 transparent);
@@ -348,7 +355,7 @@
         }
 
         .active .accordion-header span { transform: rotate(45deg); }
-        .active .accordion-content { max-height: 300px; padding-bottom: 1.5rem; }
+        .active .accordion-content { max-height: 500px; padding-bottom: 1.5rem; }
 
         /* * HOW IT WORKS */
         #how-it-works {
@@ -703,7 +710,7 @@
         /* RESPONSIVE SCALING */
         @media (min-width: 1024px) {
             .glow-logo {
-                width: 165px;
+                width: 124px; /* Reduced by ~25% from 165px */
             }
         }
 
@@ -733,7 +740,22 @@
                 padding: 2.5rem 0;
             }
 
-            .nav-links { display: none; }
+            .nav-links { 
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0,0,0,0.95);
+                padding: 1rem 0;
+                text-align: center;
+                border-bottom: 1px solid var(--border-light);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            
             .mobile-toggle { display: block; }
             .form-grid { grid-template-columns: 1fr; }
             .form-group.full-width { grid-column: span 1; }
@@ -768,7 +790,7 @@
         </div>
     </nav>
     
-    <a href="#investor-access" class="btn floating-cta">Request Investor Access</a>
+    <a href="#investor-access" class="btn floating-cta hidden">Request Investor Access</a>
 
     <section id="hero">
         <div id="canvas-container"></div>
@@ -781,11 +803,10 @@
         </div>
 
         <div class="container hero-content">
-            <h1>Investor-Ready Property Opportunities.<br><span class="text-accent">Fully Packaged. Structured.</span></h1>
+            <h1>Investor-Ready Property Opportunities.<br><span class="text-accent">Fully Packaged.</span></h1>
             <div class="section-header-block" style="margin-bottom: 2rem;">
                 <p style="color: #ffffff;">On The Curb provides qualified investors with priority access to fully-packaged UK property opportunities, prepared with the analysis serious capital requires.</p>
             </div>
-            <a href="#investor-access" class="btn">Request Investor Access</a>
         </div>
     </section>
 
@@ -812,7 +833,7 @@
             </div>
 
             <div class="tagline-banner">
-                <h3>STRUCTURED PROGRESSION. CLEAR DOCUMENTATION. DISCIPLINED EXECUTION.</h3>
+                <h3>DEFINED PROGRESSION. CLEAR DOCUMENTATION. DISCIPLINED EXECUTION.</h3>
             </div>
         </div>
     </section>
@@ -825,7 +846,7 @@
                     <div class="accordion-item">
                         <button class="accordion-header">How does access work? <span>+</span></button>
                         <div class="accordion-content">
-                            <p>Complete the Investor Access form and you are automatically redirected to our off-market platform. There, you can review structured property opportunities presented with pricing, projections, and supporting data.</p>
+                            <p>Complete the Investor Access form and you are automatically redirected to our off-market platform. There, you can review vetted property opportunities presented with pricing, projections, and supporting data.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -837,7 +858,7 @@
                     <div class="accordion-item">
                         <button class="accordion-header">What happens after reservation? <span>+</span></button>
                         <div class="accordion-content">
-                            <p>Once reserved, a dedicated group chat is created with you and our Deal Acquisition Team. From there, we coordinate: Further due diligence, Viewing arrangements, Offer confirmation, Formal presentation to seller, Progression toward completion.</p>
+                            <p>Once reserved, a dedicated group chat is created with you and our Deal Acquisition Team. From there, we coordinate: further due diligence, viewing arrangements, offer confirmation, formal presentation to the seller, and progression toward completion.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -871,9 +892,9 @@
 
     <section id="how-it-works">
         <div class="container">
-            <div class="section-header-block">
+            <div class="section-header-block" style="max-width: 900px;">
                 <h2>A Controlled Progression From Access to Completion</h2>
-                <p>Our process is structured to move opportunities efficiently from review to completion, with clarity at every stage.</p>
+                <p>Our process is designed to move opportunities efficiently from review to completion, with clarity at every stage.</p>
             </div>
             
             <div class="steps-grid">
@@ -885,7 +906,7 @@
                 <div class="step-card">
                     <div class="step-num">02</div>
                     <h3 class="step-title">Review Opportunities</h3>
-                    <p class="step-desc">Browse structured property opportunities presented with pricing, projections, and supporting data.</p>
+                    <p class="step-desc">Browse vetted property opportunities presented with pricing, projections, and supporting data.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-num">03</div>
@@ -894,7 +915,7 @@
                 </div>
                 <div class="step-card">
                     <div class="step-num">04</div>
-                    <h3 class="step-title">Structured Due Diligence</h3>
+                    <h3 class="step-title">Guided Due Diligence</h3>
                     <p class="step-desc">Work with our Deal Acquisition Team to complete further due diligence and arrange viewings.</p>
                 </div>
                 <div class="step-card">
@@ -910,7 +931,7 @@
                 <div class="step-card">
                     <div class="step-num">07</div>
                     <h3 class="step-title">Ongoing Portfolio Progression</h3>
-                    <p class="step-desc">Following completion, investors remain positioned for continued access to structured opportunities as they scale and expand their portfolio.</p>
+                    <p class="step-desc">Following completion, investors remain positioned for continued access to fully-packaged opportunities as they scale and expand their portfolio.</p>
                 </div>
             </div>
             
@@ -933,11 +954,11 @@
             <div class="split-layout">
                 <div class="left-content">
                     <h2 style="margin-bottom: 1rem;">Investor Access</h2>
-                    <p style="color: #fff; margin-bottom: 2rem; font-size: 1.1rem;">Request access to On The Curb’s off-market platform. Structured property opportunities prepared for informed review and defined progression.</p>
+                    <p style="color: #fff; margin-bottom: 2rem; font-size: 1.1rem;">Request access to On The Curb’s off-market platform. Curated property opportunities prepared for informed review and defined progression.</p>
 
-                    <h4 class="text-accent" style="margin-top: 2rem; margin-bottom: 1rem;">Why Investors Apply</h4>
+                    <h4 class="text-accent" style="margin-top: 2rem; margin-bottom: 1rem;">Why Investors Register</h4>
                     <ul class="access-list">
-                        <li><span class="tick">✓</span> <strong>Structured Review:</strong> Opportunities presented with financial context and progression clarity.</li>
+                        <li><span class="tick">✓</span> <strong>Comprehensive Review:</strong> Opportunities presented with financial context and progression clarity.</li>
                         <li><span class="tick">✓</span> <strong>Defined Progression:</strong> Clear reservation structure and formal offer handling.</li>
                         <li><span class="tick">✓</span> <strong>Direct Access:</strong> Off-market opportunities positioned prior to open-market exposure.</li>
                     </ul>
@@ -953,7 +974,7 @@
                          <div class="accordion-item">
                             <button class="accordion-header" style="font-size: 0.9rem;">How Are Opportunities Released? <span>+</span></button>
                             <div class="accordion-content">
-                                <p>Information on how opportunities are released to the off-market platform.</p>
+                                <p>Opportunities are released exclusively to our registered network via our off-market platform. Once an opportunity passes our due diligence, it is packaged with full financial context and made available for immediate review.</p>
                             </div>
                         </div>
                         <div class="accordion-item">
@@ -965,7 +986,7 @@
                         <div class="accordion-item">
                             <button class="accordion-header" style="font-size: 0.9rem;">How Reservation And Offer Progression Works <span>+</span></button>
                             <div class="accordion-content">
-                                <p>Details surrounding securing the property through structured progressions.</p>
+                                <p>Details surrounding securing the property through a defined progression.</p>
                             </div>
                         </div>
                          <div class="accordion-item">
@@ -1014,9 +1035,11 @@
                                 <label>Budget Range</label>
                                 <select required>
                                     <option value="">Select...</option>
-                                    <option>£50k - £100k</option>
+                                    <option>Up to £100k</option>
                                     <option>£100k - £250k</option>
-                                    <option>£250k+</option>
+                                    <option>£250k - £500k</option>
+                                    <option>£500k - £1M</option>
+                                    <option>£1M+</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -1066,7 +1089,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn" style="width: 100%;">Proceed to Platform</button>
+                        <button type="submit" class="btn" style="width: 100%;">SUBMIT</button>
 
                         <p class="disclaimer-text">
                             By submitting this form, you confirm the information provided is accurate, understand that proof of funds is required prior to formal offer presentation, and agree not to share or attempt to contact any property owner or deal source directly. On The Curb reserves the right to revoke access where confidentiality standards are breached.
@@ -1392,12 +1415,38 @@
                 }
             });
         });
+        
+        // 1b. Mobile Menu Toggle Logic
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinksContainer = document.querySelector('.nav-links');
 
-        // 2. Accordion Logic
+        mobileToggle.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+        
+        // Hide mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth <= 768) {
+                    navLinksContainer.classList.remove('active');
+                }
+            });
+        });
+
+        // 2. Accordion Logic (Modified to close others)
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
                 const item = header.parentElement;
                 const content = header.nextElementSibling;
+                const container = item.parentElement;
+                
+                // Close all other items in this specific accordion container
+                container.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                    }
+                });
                 
                 // Toggle current
                 item.classList.toggle('active');
@@ -1409,6 +1458,32 @@
                 }
             });
         });
+        
+        // 2b. Floating CTA Visibility Logic
+        const ctaBtn = document.querySelector('.floating-cta');
+        const heroSec = document.getElementById('hero');
+        const investorSec = document.getElementById('investor-access');
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                // Ensure reliable visibility check
+                const heroRect = heroSec.getBoundingClientRect();
+                const invRect = investorSec.getBoundingClientRect();
+                
+                // Buffer to define when it's "visible" on screen
+                const isHeroVisible = (heroRect.top < window.innerHeight && heroRect.bottom > 0);
+                const isInvVisible = (invRect.top < window.innerHeight && invRect.bottom > 0);
+
+                if (isHeroVisible || isInvVisible) {
+                    ctaBtn.classList.add('hidden');
+                } else {
+                    ctaBtn.classList.remove('hidden');
+                }
+            }, { threshold: [0, 0.1, 0.5, 1] });
+
+            observer.observe(heroSec);
+            observer.observe(investorSec);
+        }
 
         // 3. Three.js "Architectural Masterplan" Logic
         (function() {
