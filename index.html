@@ -70,7 +70,8 @@
         h1 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: var(--spacing-md);
-            color: var(--text-main);
+            color: #fff;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5); 
         }
 
         h2 {
@@ -227,7 +228,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, transparent 0%, rgba(252,252,252,0.9) 85%);
+            background: radial-gradient(circle at center, transparent 0%, #000000 85%);
             z-index: 2;
             pointer-events: none;
         }
@@ -815,7 +816,7 @@
         <div class="container hero-content">
             <h1>Investor-Ready Property Opportunities.<br><span class="text-accent">Fully Packaged.</span></h1>
             <div class="section-header-block" style="margin-bottom: 2rem;">
-                <p style="color: var(--text-muted);">On The Curb provides qualified investors with priority access to fully-packaged UK property opportunities, prepared with the analysis serious capital requires.</p>
+                <p style="color: #ffffff;">On The Curb provides qualified investors with priority access to fully-packaged UK property opportunities, prepared with the analysis serious capital requires.</p>
             </div>
         </div>
     </section>
@@ -1495,14 +1496,14 @@
             observer.observe(investorSec);
         }
 
-        // 3. Three.js "Architectural Masterplan" Logic (Light Mode V3)
+        // 3. Three.js "Architectural Masterplan" Logic
         (function() {
             const container = document.getElementById('canvas-container');
             const scene = new THREE.Scene();
             
-            // BACKGROUND & FOG - Updated to soft white
-            scene.background = new THREE.Color(0xfcfcfc);
-            scene.fog = new THREE.Fog(0xfcfcfc, 5, 18); 
+            // BACKGROUND & FOG
+            scene.background = new THREE.Color(0x080808);
+            scene.fog = new THREE.Fog(0x080808, 5, 18); 
 
             const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000);
             const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -1515,10 +1516,10 @@
             const cityGroup = new THREE.Group();
             scene.add(cityGroup);
 
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8); 
+            const ambientLight = new THREE.AmbientLight(0x2c3e50, 1.5); 
             scene.add(ambientLight);
 
-            const dirLight = new THREE.DirectionalLight(0xffffff, 0.5); 
+            const dirLight = new THREE.DirectionalLight(0xfff0dd, 2); 
             dirLight.position.set(10, 12, 5);
             dirLight.castShadow = true;
             dirLight.shadow.mapSize.width = 2048;
@@ -1527,27 +1528,27 @@
             dirLight.shadow.camera.far = 50;
             scene.add(dirLight);
 
-            const spotLight = new THREE.SpotLight(0xe93f00, 4);
+            const spotLight = new THREE.SpotLight(0xe93f00, 5);
             spotLight.position.set(-10, 5, -5);
             spotLight.lookAt(0,0,0);
             scene.add(spotLight);
 
             const buildMaterial = new THREE.MeshStandardMaterial({
-                color: 0xf0f0f0,
-                roughness: 0.9,
+                color: 0x1a1a1a,
+                roughness: 0.7,
                 metalness: 0.1,
             });
 
             const roofMaterial = new THREE.MeshStandardMaterial({
-                color: 0xe0e0e0,
-                roughness: 0.5,
+                color: 0x222222,
+                roughness: 0.2,
                 metalness: 0.1,
             });
 
             const edgeMaterial = new THREE.LineBasicMaterial({
-                color: 0xcccccc, 
+                color: 0x444444, 
                 transparent: true, 
-                opacity: 0.5
+                opacity: 0.3
             });
 
             const boxGeo = new THREE.BoxGeometry(1, 1, 1);
@@ -1585,7 +1586,7 @@
 
             const planeGeometry = new THREE.PlaneGeometry(60, 60);
             const planeMaterial = new THREE.MeshStandardMaterial({ 
-                color: 0xfcfcfc,
+                color: 0x080808,
                 roughness: 1,
                 metalness: 0
             });
@@ -1594,7 +1595,7 @@
             plane.receiveShadow = true;
             cityGroup.add(plane);
 
-            const gridHelper = new THREE.GridHelper(60, 60, 0xdddddd, 0xeeeeee);
+            const gridHelper = new THREE.GridHelper(60, 60, 0x333333, 0x111111);
             gridHelper.position.y = 0.01;
             cityGroup.add(gridHelper);
 
