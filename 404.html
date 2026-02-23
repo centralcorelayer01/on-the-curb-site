@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | On The Curb</title>
+    <style>
+        :root {
+            --bg-body: #fcfcfc;
+            --accent-primary: #e93f00;
+            --text-main: #000000;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container { padding: 2rem; max-width: 500px; }
+        
+        h1 { font-size: 6rem; margin: 0; color: var(--accent-primary); line-height: 1; letter-spacing: -0.05em; }
+        h2 { font-size: 1.25rem; margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 0.1em; color: #555; }
+        
+        /* Updated to match success.html button exactly */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent-primary);
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            border: 1px solid var(--accent-primary);
+            transition: 0.3s ease;
+        }
+        .btn:hover { 
+            background: transparent; 
+            color: var(--accent-primary); 
+            box-shadow: 0 0 15px rgba(233, 63, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <h2>Oops! This page moved on.</h2>
+        <a href="index.html" class="btn">Back to Homepage</a>
+    </div>
+</body>
+</html>

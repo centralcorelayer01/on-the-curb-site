@@ -1,0 +1,8 @@
+/about              /#why               301
+/how-it-works       /#how-it-works      301
+/investors          /#investor-access   301
+/contact            /#contact           301
+/properties         /#investor-access   301
+
+# Standard Netlify 404 handling
+/* /404.html   404

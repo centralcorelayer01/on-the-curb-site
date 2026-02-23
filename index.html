@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On The Curb Real Estate | Investor-Ready Opportunities</title>
+    <meta name="description" content="Access 200+ exclusive off-market property deals. Verified buy-to-let and HMO opportunities.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta property="og:title" content="On The Curb Real Estate | Investor Access">
+    <meta property="og:description" content="Access exclusive off-market property deals. Verified buy-to-let and HMO opportunities.">
+    <meta property="og:image" content="https://www.onthecurbrealestate.co.uk/social-preview.jpg">
+    <meta property="og:url" content="https://www.onthecurbrealestate.co.uk">
+    <style>
+        /* * CORE VARIABLES & RESET  
+         */
+        :root {
+            /* Light Mode Color Synthesis - V3 (Soft White) */
+            --bg-body: #fcfcfc; /* Soft, anti-glare paper white */
+            --bg-surface: #ffffff; /* Pure white for cards to subtly lift off the background */
+            --bg-card-hover: #ffffff;
+            
+            --accent-primary: #e93f00; /* The specific orange stays identical */
+            --accent-glow: rgba(233, 63, 0, 0.2);
+            
+            --text-main: #000000;
+            --text-muted: #555555;
+            --border-light: #e5e5e5;
+            --border-hover: #e93f00;
+            
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            
+            /* Mathematical Vertical Rhythm */
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4.5rem; /* Standard section block gap */
+            
+            --radius-sm: 4px;
+            --radius-md: 12px;
+            
+            --transition-smooth: 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            scroll-padding-top: 100px; /* Fixes navbar overlapping section titles */
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition-smooth); }
+        ul { list-style: none; }
+        
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            color: #fff;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5); 
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-sm);
+            max-width: 65ch;
+        }
+
+        .text-accent { color: var(--accent-primary); }
+        .text-center { text-align: center; }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        /* SECTION RHYTHM */
+        section:not(#hero) {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .section-header-block {
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            text-align: center;
+        }
+
+        .section-header-block p {
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent-primary);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid var(--accent-primary);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-primary);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        
+        /* FLOATING CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 0.6rem 1.2rem;
+            font-size: 0.8rem;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .floating-cta.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* * HEADER */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-light);
+            padding: 1.2rem 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span { color: var(--accent-primary); margin-right: 5px; }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
+            opacity: 0.7;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover, .nav-links a.active { 
+            opacity: 1; 
+            color: var(--accent-primary); 
+        }
+        .mobile-toggle { display: none; color: var(--text-main); font-size: 1.5rem; cursor: pointer; }
+
+        /* * HERO SECTION */
+        #hero {
+            min-height: 100vh;
+            min-height: 100svh;
+            background-color: #080808;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            touch-action: pan-y; /* Fix: Allow vertical scroll while locking 3D orientation */
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, #000000 85%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* --- SHARED LOGO STYLING --- */
+        .glow-logo {
+            width: 84px;
+            display: block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            mix-blend-mode: multiply;
+        }
+
+        .glow-logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-content { 
+            max-width: 1100px;
+            position: relative;
+            z-index: 3;
+            margin-top: -30px; 
+        }
+
+        /* * WHY SECTION */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .feature-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-primary);
+            background: var(--bg-card-hover);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        
+        .feature-card p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--text-muted);
+        }
+
+        .tagline-banner {
+            text-align: center;
+            margin-top: var(--spacing-xl);
+        }
+
+        .tagline-banner h3 {
+            color: var(--accent-primary);
+            letter-spacing: 0.15em;
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        .mobile-break { display: none; }
+
+        /* * LOGO MARQUEE SCROLLER */
+        .marquee-container {
+            width: 100%;
+            max-width: 800px; /* Constrains the width to match the tagline layout */
+            margin: 0 auto; /* Centers the marquee block horizontally */
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            padding: var(--spacing-md) 0;
+            background: var(--bg-body);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            align-items: center;
+            gap: 5rem; 
+            padding-right: 5rem;
+            animation: scroll-marquee 20s linear infinite;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 70px;
+            transition: var(--transition-smooth);
+        }
+
+        .marquee-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .marquee-item.aml-item {
+            transform: translateZ(0);
+        }
+        
+        .marquee-item.aml-item:hover {
+            transform: translateZ(0);
+        }
+
+        .marquee-item img, .marquee-item svg {
+            height: 100%;
+            width: auto;
+            max-width: 250px;
+            mix-blend-mode: multiply;
+        }
+
+        .ico-logo {
+            transform: scale(1.35);
+            transform-origin: center;
+        }
+
+        @keyframes scroll-marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+        
+        @media (max-width: 768px) {
+            .marquee-track { gap: 3rem; padding-right: 3rem; }
+        }
+
+        /* * PROCESS / ACCORDIONS */
+        .accordion-container {
+            max-width: 100%;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 1.5rem 0;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header span {
+            color: var(--accent-primary);
+            font-size: 1.5rem;
+            font-weight: 400;
+            transition: transform 0.15s; /* Speeded up */
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.15s ease-out; /* Speeded up */
+            color: var(--text-muted);
+        }
+
+        .active .accordion-header span { transform: rotate(45deg); }
+        .active .accordion-content { max-height: 500px; padding-bottom: 1.5rem; }
+
+        /* * HOW IT WORKS */
+        #how-it-works {
+            background: linear-gradient(to bottom, var(--bg-body), #f5f5f5);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .steps-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .step-card:nth-child(1) {
+                grid-column: span 2;
+            }
+        }
+
+        .step-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            position: relative;
+            transition: var(--transition-smooth);
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: default;
+        }
+
+        .step-card:hover {
+            border-color: var(--accent-primary);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .step-num {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #f0f0f0;
+            transition: 0.3s;
+            line-height: 1;
+        }
+
+        .step-card:hover .step-num { color: var(--accent-primary); }
+
+        .step-title {
+            font-size: 1.25rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            z-index: 2;
+        }
+
+        .step-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            opacity: 0.8;
+            transition: 0.3s;
+            z-index: 2;
+        }
+
+        .step-card:hover .step-desc { opacity: 1; color: #222; }
+
+        /* TERMS GRID */
+        .terms-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: var(--spacing-lg) auto 0;
+        }
+        
+        @media (min-width: 768px) {
+            .terms-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* * INVESTOR ACCESS */
+        #investor-access {
+            border-top: 1px solid var(--border-light);
+        }
+
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .access-list li {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .access-list strong { color: var(--text-main); }
+        .tick { color: var(--accent-primary); margin-right: 8px; font-weight: bold; }
+
+        /* Form */
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: inherit;
+            transition: var(--transition-smooth);
+            font-size: 16px; /* iOS Form Zoom fix applied */
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .disclaimer-text {
+            font-size: 0.75rem;
+            color: #777;
+            margin-top: 1rem;
+            line-height: 1.4;
+        }
+
+        /* * CONTACT */
+        #contact {
+            background: var(--bg-body);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .contact-wrap {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* * REVIEWS SECTION */
+        #reviews {
+            text-align: center;
+        }
+
+        /* --- FOOTER LOGO WRAPPER --- */
+        .footer-logo-link {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto var(--spacing-xl) auto;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* * FOOTER */
+        footer {
+            padding: var(--spacing-lg) 0; 
+            background: var(--bg-body);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-flex {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-flex a {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-flex a:hover { color: var(--accent-primary); }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .social-icons a {
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-primary);
+            transform: scale(1.1);
+        }
+        
+        .social-icons svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .legal-copy { 
+            text-align: center; 
+            opacity: 0.8; 
+            line-height: 1.8;
+            font-size: 0.8rem;
+        }
+        
+        .legal-copy p {
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        /* * MODAL OVERLAYS */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--bg-surface);
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            z-index: 10;
+        }
+
+        .modal-header h3 {
+            margin-bottom: 0;
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .modal-close:hover {
+            color: var(--accent-primary);
+        }
+
+        .modal-body {
+            padding: 2rem;
+            overflow-y: auto;
+            color: var(--text-muted);
+        }
+        
+        .modal-body h4, .modal-body h5 {
+            color: var(--text-main);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: flex-end;
+            position: sticky;
+            bottom: 0;
+            background: var(--bg-surface);
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+            z-index: 10;
+        }
+
+        /* RESPONSIVE SCALING */
+        @media (min-width: 1024px) {
+            .glow-logo {
+                width: 124px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .feature-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .feature-grid .feature-card {
+                flex: 0 1 calc(50% - var(--spacing-md));
+            }
+            .feature-grid .feature-card:first-child {
+                flex: 0 1 100%;
+                max-width: calc(50% - var(--spacing-md));
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .split-layout { grid-template-columns: 1fr; }
+            .mobile-break { display: block; }
+            
+            /* Moved form-grid collapse here for half-screen desktop alignment fix */
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+        }
+        
+        @media (max-width: 768px) {
+            section:not(#hero) {
+                padding: 2.5rem 0;
+            }
+
+            .nav-links { 
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                padding: 1rem 0;
+                text-align: center;
+                border-bottom: 1px solid var(--border-light);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-toggle { display: block; }
+            .footer-flex { gap: 1rem; flex-direction: column; }
+            
+            .feature-grid { flex-direction: column; }
+            .feature-grid .feature-card, .feature-grid .feature-card:first-child {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+            
+            .modal-header, .modal-body, .modal-footer {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="#hero" class="logo">
+                <img src="logo.png" alt="OTC Logo" style="height: 50px; width: auto; mix-blend-mode: multiply;">
+            </a>
+            <div class="nav-links">
+                <a href="#hero" class="nav-item">Home</a>
+                <a href="#how-it-works" class="nav-item">How It Works</a>
+                <a href="#investor-access" class="nav-item">Investor Access</a>
+                <a href="#contact" class="nav-item">Contact Us</a>
+            </div>
+            <div class="mobile-toggle">☰</div>
+        </div>
+    </nav>
+    
+    <a href="#investor-access" class="btn floating-cta hidden">Request Investor Access</a>
+
+    <section id="hero">
+        <div id="canvas-container"></div>
+        <div class="hero-overlay"></div> 
+
+        <div class="container hero-content">
+            <h1>Investor-Ready Opportunities<br><span class="text-accent">Fully Vetted</span></h1>
+            <div class="section-header-block" style="margin-bottom: 2rem;">
+                <p style="color: #ffffff;">On The Curb provides qualified investors with priority access to fully-packaged UK property opportunities, prepared with the analysis serious capital requires.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="why">
+        <div class="container">
+            <div class="section-header-block">
+                <h2>Why On The Curb?</h2>
+                <p>On The Curb provides access to property opportunities prepared within a defined progression framework and solicitor-led transaction structure. Each opportunity is positioned for informed review before commitment, with clarity around process and commercial terms. We prioritise structure, documentation and disciplined execution.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Defined Progression</h3>
+                    <p>Clear reservation structure and formal offer handling.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Documented Standards</h3>
+                    <p>Commercial terms confirmed in writing prior to progression.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Regulated Framework</h3>
+                    <p>Registered with The Property Redress Scheme and ICO compliant.</p>
+                </div>
+            </div>
+
+            <div class="tagline-banner">
+                <h3>DEFINED PROGRESSION. <br class="mobile-break">CLEAR DOCUMENTATION. <br class="mobile-break">DISCIPLINED EXECUTION.</h3>
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="marquee-item" title="ICO Registration: ZB895054">
+                <img src="ico-logo.png" alt="ICO Registered" class="ico-logo">
+            </div>
+            
+            <div class="marquee-item" title="PRS Membership: PRS051813">
+                <img src="prs-logo.avif" alt="Property Redress Scheme Member">
+            </div>
+            
+            <div class="marquee-item aml-item" title="MLR Registration: XSML00000209159">
+                <svg viewBox="0 0 245 60" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="245" height="60" rx="8" fill="#1b5e20"/>
+                    <path d="M25 12 L40 16 L40 32 C40 46 30 54 25 56 C20 54 10 46 10 32 L10 16 Z" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+                    <path d="M18 32 L23 37 L33 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                    <text x="50" y="27" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">ANTI-MONEY LAUNDERING</text>
+                    <text x="50" y="45" font-family="Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="1" fill="#a5d6a7">SUPERVISION</text>
+                </svg>
+            </div>
+
+            <div class="marquee-item" title="ICO Registration: ZB895054">
+                <img src="ico-logo.png" alt="ICO Registered" class="ico-logo">
+            </div>
+            
+            <div class="marquee-item" title="PRS Membership: PRS051813">
+                <img src="prs-logo.avif" alt="Property Redress Scheme Member">
+            </div>
+            
+            <div class="marquee-item aml-item" title="MLR Registration: XSML00000209159">
+                <svg viewBox="0 0 245 60" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="245" height="60" rx="8" fill="#1b5e20"/>
+                    <path d="M25 12 L40 16 L40 32 C40 46 30 54 25 56 C20 54 10 46 10 32 L10 16 Z" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+                    <path d="M18 32 L23 37 L33 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                    <text x="50" y="27" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">ANTI-MONEY LAUNDERING</text>
+                    <text x="50" y="45" font-family="Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="1" fill="#a5d6a7">SUPERVISION</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <section id="clarity">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h2 class="text-center" style="margin-bottom: var(--spacing-lg);">Process & Structure Clarity</h2>
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <button class="accordion-header">How does access work? <span>+</span></button>
+                        <div class="accordion-content">
+                            <p>Complete the Investor Access form and you are automatically redirected to our off-market platform. There, you can review vetted property opportunities presented with pricing, projections, and supporting data.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">What does reserving a property mean? <span>+</span></button>
+                        <div class="accordion-content">
+                            <p>Reservation secures the opportunity and removes it from circulation. It confirms your intent to progress and initiates structured deal progression with our Deal Acquisition Team. Reservation is not a legally binding commitment to purchase. Legal commitment occurs only once contracts are formally exchanged through solicitors. Reservation does not constitute acceptance of an offer by the seller. The reservation fee is fully refundable following further due diligence and viewing, should you decide not to proceed.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">What happens after reservation? <span>+</span></button>
+                        <div class="accordion-content">
+                            <p>Once reserved, a dedicated group chat is created with you and our Deal Acquisition Team. From there, we coordinate: further due diligence, viewing arrangements, offer confirmation, formal presentation to the seller, and progression toward completion.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Is proof of funds required? <span>+</span></button>
+                        <div class="accordion-content">
+                            <p>Yes. Proof of funds is required before any offer is formally presented to a seller. For cash buyers, this includes confirmation of full purchase funds. For mortgage buyers, an Agreement in Principle and proof of deposit funds are required. This ensures transaction certainty and protects seller commitments.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Who handles the legal transfer? <span>+</span></button>
+                        <div class="accordion-content">
+                            <p>Completion is handled through appointed solicitors in the standard legal manner. On The Curb oversees progression to maintain clarity and efficiency between parties.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Do you hold investor funds? <span>+</span></button>
+                        <div class="accordion-content">
+                            <p>No. On The Curb does not hold purchase funds. All transaction funds move through appropriate legal channels.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Do you provide financial advice? <span>+</span></button>
+                        <div class="accordion-content">
+                            <p>No. On The Curb is a property sourcing and deal packaging company. Investors should obtain independent financial and legal advice before committing capital.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works">
+        <div class="container">
+            <div class="section-header-block" style="max-width: 900px;">
+                <h2>Progression From Access to Completion</h2>
+                <p>Our process is designed to move opportunities efficiently from review to completion, with clarity at every stage.</p>
+            </div>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <h3 class="step-title">Access</h3>
+                    <p class="step-desc">Complete the Investor Access form and gain immediate access to our off-market platform.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <h3 class="step-title">Review Opportunities</h3>
+                    <p class="step-desc">Browse vetted property opportunities presented with pricing, projections, and supporting data.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <h3 class="step-title">Secure by Reservation</h3>
+                    <p class="step-desc">Reserve the opportunity to secure your position and remove it from circulation.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">04</div>
+                    <h3 class="step-title">Guided Due Diligence</h3>
+                    <p class="step-desc">Work with our Deal Acquisition Team to complete further due diligence and arrange viewings.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">05</div>
+                    <h3 class="step-title">Formal Offer Presentation</h3>
+                    <p class="step-desc">Provide proof of funds and confirm your offer prior to formal presentation to the seller. For cash buyers, this includes confirmation of full purchase funds. For mortgage buyers, this includes an Agreement in Principle and proof of deposit funds.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">06</div>
+                    <h3 class="step-title">Solicitor-Led Completion</h3>
+                    <p class="step-desc">Once agreed, the transaction progresses through solicitors in the standard legal manner until completion.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">07</div>
+                    <h3 class="step-title">Portfolio Progression</h3>
+                    <p class="step-desc">Following completion, investors remain positioned for continued access to fully-packaged opportunities as they scale and expand their portfolio.</p>
+                </div>
+            </div>
+            
+            <div class="terms-grid">
+                <div class="feature-card" style="text-align: left;">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent-primary); font-size: 1.1rem; text-transform: none;">Commercial Terms</h3>
+                    <p>On The Curb operates on a transparent professional fee model. All commercial terms are clearly confirmed in writing prior to transaction progression. There are no hidden charges.</p>
+                </div>
+                <div class="feature-card" style="text-align: left;">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent-primary); font-size: 1.1rem; text-transform: none;">Reservation & Offer Clarification</h3>
+                    <p>Reservation secures an opportunity and removes it from circulation. It does not constitute a legally binding commitment to purchase, and it does not represent acceptance of an offer by the seller. Legal commitment occurs only upon formal exchange of contracts through solicitors.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="investor-access">
+        <div class="container">
+            <div class="split-layout">
+                <div class="left-content">
+                    <h2 style="margin-bottom: 1rem;">Investor Access</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">Request access to On The Curb’s off-market platform. Curated property opportunities prepared for informed review and defined progression.</p>
+
+                    <h4 class="text-accent" style="margin-top: 2rem; margin-bottom: 1rem;">Why Investors Register</h4>
+                    <ul class="access-list">
+                        <li><span class="tick">✓</span> <strong>Comprehensive Review:</strong> Opportunities presented with financial context and progression clarity.</li>
+                        <li><span class="tick">✓</span> <strong>Defined Progression:</strong> Clear reservation structure and formal offer handling.</li>
+                        <li><span class="tick">✓</span> <strong>Direct Access:</strong> Off-market opportunities positioned prior to open-market exposure.</li>
+                    </ul>
+
+                    <div style="margin-top: 2rem; border-top: 1px solid var(--border-light);">
+                         <h4 style="margin: 1.5rem 0 1rem; color: var(--text-main);">Investor Questions</h4>
+                         <div class="accordion-item">
+                            <button class="accordion-header" style="font-size: 0.9rem;">What Is An Off-Market Opportunity? <span>+</span></button>
+                            <div class="accordion-content">
+                                <p>Properties not listed on Rightmove or Zoopla. Sourced directly from sellers and exclusive to our network.</p>
+                            </div>
+                        </div>
+                         <div class="accordion-item">
+                            <button class="accordion-header" style="font-size: 0.9rem;">How Are Opportunities Released? <span>+</span></button>
+                            <div class="accordion-content">
+                                <p>Opportunities are released exclusively to our registered network via our off-market platform. Once an opportunity passes our due diligence, it is packaged with full financial context and made available for immediate review.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" style="font-size: 0.9rem;">What Information Is Provided With Each Opportunity? <span>+</span></button>
+                            <div class="accordion-content">
+                                <p>Details of pricing, projections, and supporting contextual data are provided.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" style="font-size: 0.9rem;">How Reservation And Offer Progression Works <span>+</span></button>
+                            <div class="accordion-content">
+                                <p>Details surrounding securing the property through a defined progression.</p>
+                            </div>
+                        </div>
+                         <div class="accordion-item">
+                            <button class="accordion-header" style="font-size: 0.9rem;">Is There A Fee To Join? <span>+</span></button>
+                            <div class="accordion-content">
+                                <p>No fee to register. Professional fees apply only where a transaction progresses. All terms confirmed in writing prior to progression.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="border-top: 4px solid var(--accent-primary);">
+                    <h3 style="margin-bottom: 0.5rem; color: var(--text-main);">Investor Access Form</h3>
+                    <p style="font-size: 0.85rem; margin-bottom: 2rem;">Complete the details below to proceed to the platform.</p>
+                    
+                   <form name="investor-access" method="POST" data-netlify="true" action="success.html">
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label>Full Name *</label>
+                                <input type="text" name="full_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number *</label>
+                                <input type="tel" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Preferred Investment Strategy *</label>
+                                <select name="strategy" required>
+                                    <option value="">Select...</option>
+                                    <option>Buy-to-Let</option>
+                                    <option>HMO</option>
+                                    <option>Housing Association</option>
+                                    <option>Serviced Accommodation</option>
+                                    <option>Development</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Target Location(s) *</label>
+                                <input type="text" name="location" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Budget Range *</label>
+                                <select name="budget" required>
+                                    <option value="">Select...</option>
+                                    <option>Up to £100k</option>
+                                    <option>£100k - £250k</option>
+                                    <option>£250k - £500k</option>
+                                    <option>£500k - £1M</option>
+                                    <option>£1M+</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Timeline to Purchase *</label>
+                                <select name="timeline" required>
+                                    <option value="">Select...</option>
+                                    <option>Ready to proceed</option>
+                                    <option>Within 3 months</option>
+                                    <option>Within 6 months</option>
+                                    <option>6–12 months</option>
+                                    <option>12+ months</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Current Portfolio Position *</label>
+                                <select name="portfolio" required>
+                                    <option value="">Select...</option>
+                                    <option>First investment</option>
+                                    <option>1-3 properties</option>
+                                    <option>4-9 properties</option>
+                                    <option>10+ properties</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Current Capital Position *</label>
+                                <select name="capital" required>
+                                    <option value="">Select...</option>
+                                    <option>Full purchase funds available</option>
+                                    <option>Deposit funds available</option>
+                                    <option>Agreement in Principle secured</option>
+                                    <option>Arranging funding</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Primary Funding Method *</label>
+                                <select name="funding" required>
+                                    <option value="">Select...</option>
+                                    <option>Cash</option>
+                                    <option>Mortgage</option>
+                                    <option>Combination</option>
+                                    <option>Undecided</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Additional Notes</label>
+                                <textarea name="notes" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn" style="width: 100%;">SUBMIT</button>
+
+                        <p class="disclaimer-text">
+                            By submitting this form, you confirm the information provided is accurate, understand that proof of funds is required prior to formal offer presentation, and agree not to share or attempt to contact any property owner or deal source directly. On The Curb reserves the right to revoke access where confidentiality standards are breached.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: var(--spacing-lg);">CONTACT US</h2>
+            <div class="contact-wrap">
+               <form name="contact-enquiry" method="POST" data-netlify="true" action="success.html">
+                    <div class="form-group">
+                        <label>FULL NAME *</label>
+                        <input type="text" name="full_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>EMAIL ADDRESS *</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>PHONE NUMBER *</label>
+                        <input type="tel" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>YOUR MESSAGE *</label>
+                        <textarea name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">SUBMIT ENQUIRY</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <div class="container">
+            <div class="section-header-block" style="margin-bottom: var(--spacing-xl);">
+                <h2 style="margin-bottom: 1rem;">Professional Feedback</h2>
+                <p style="margin-bottom: 2rem;">Verified Google reviews from investors and partners.</p>
+                <a href="https://share.google/xeY9iIqZwuwIy8ORl" target="_blank" rel="noopener noreferrer" class="text-accent" style="font-weight: 600;">Leave or View all reviews on Google</a>
+            </div>
+            
+            <a href="#hero" class="footer-logo-link" style="margin-bottom: var(--spacing-xl);">
+                <img src="logo.png" alt="OTC Logo" class="glow-logo" style="width: 300px; max-width: 90vw; mix-blend-mode: multiply;">
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-flex">
+                <a href="#hero">Home</a>
+                <a href="#how-it-works">How We Work</a>
+                <a href="#investor-access">Investor Access</a>
+                <a href="#contact">Contact Us</a>
+                <a href="#" onclick="event.preventDefault(); openModal('modal-terms');">Terms and Conditions</a>
+                <a href="#" onclick="event.preventDefault(); openModal('modal-privacy');">Privacy Policy</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://www.tiktok.com/@onthecurbrealestate" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.26-1.17 4.54-3.05 5.86-1.87 1.34-4.38 1.75-6.55 1.09-2.2-.67-3.96-2.52-4.49-4.73-.55-2.24.12-4.76 1.83-6.26 1.71-1.5 4.31-1.95 6.4-1.29l.06 4.32c-.93-.19-1.94-.09-2.73.47-.78.55-1.17 1.53-1.07 2.48.09.91.73 1.72 1.62 1.96.9.23 1.89.04 2.61-.53.71-.57 1.1-1.5 1.1-2.43V.02h-1.5z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/onthecurbrealestate" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85C2.38 3.85 3.92 2.31 7.15 2.23 8.42 2.18 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07c-4.27.19-6.78 2.7-6.98 6.98C0 8.33 0 8.74 0 12s.01 3.67.07 4.95c.19 4.28 2.71 6.79 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.28-.19 6.79-2.71 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.19-4.27-2.71-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm5.8-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/107003826/admin/dashboard/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.56c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+                </a>
+            </div>
+
+            <div class="legal-copy">
+                <p style="margin-bottom: 0.5rem;"><a href="mailto:admin@onthecurbrealestate.co.uk">admin@onthecurbrealestate.co.uk</a> | United Kingdom</p>
+                <p>&copy; 2025 On The Curb Real Estate Ltd.<br>Registered in England and Wales. Company No. 16392328</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="modal-privacy">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Privacy Policy</h3>
+                <button class="modal-close" onclick="closeModal('modal-privacy')">CLOSE ✕</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Effective Date:</strong> 31/05/25</p>
+                
+                <h4>1. Introduction</h4>
+                <p>On The Curb Real Estate Ltd ("OTC," "we," "us," or "our") respects your privacy and is committed to protecting your personal data. This Privacy Policy describes how we collect, use, disclose, and protect your information when you interact with our services, website, lead magnets, and associated platforms.</p>
+                
+                <h4>2. Personal Data We Collect</h4>
+                <ul>
+                    <li><strong>Identity Data:</strong> Name, username, or similar identifiers.</li>
+                    <li><strong>Contact Data:</strong> Email address, telephone numbers, and mailing address.</li>
+                    <li><strong>Financial Data:</strong> Payment-related information (only where relevant to transactions).</li>
+                    <li><strong>Technical Data:</strong> IP address, browser type, device data, and usage behaviour.</li>
+                    <li><strong>Usage Data:</strong> Information about how you use our website, services, downloads, and communications.</li>
+                    <li><strong>Marketing & Communications Data:</strong> Your preferences in receiving marketing from us.</li>
+                </ul>
+
+                <h4>3. How We Collect Your Data</h4>
+                <ul>
+                    <li><strong>Direct Interactions:</strong> Completing forms (e.g., investor intake, seller intake, referral forms, lead magnet downloads), email correspondence, or by phone.</li>
+                    <li><strong>Automated Technologies:</strong> Via cookies and similar tracking technologies on our website.</li>
+                    <li><strong>Third Parties/Public Sources:</strong> Analytics providers, advertising networks, and data partners.</li>
+                </ul>
+
+                <h4>4. Our Use Your Personal Data</h4>
+                <ul>
+                    <li>To deliver services and respond to enquiries.</li>
+                    <li>To manage investor and seller relationships.</li>
+                    <li>To provide downloadable educational materials (e.g., the OTC Buy-to-Let Wealth Builder Blueprint™).</li>
+                    <li>For onboarding, follow-up, and marketing (where consent has been given).</li>
+                    <li>For legal and compliance requirements.</li>
+                    <li>For legitimate business interests, where your rights do not override those interests.</li>
+                </ul>
+
+                <h4>5. Legal Basis for Processing</h4>
+                <ul>
+                    <li><strong>Consent:</strong> Where you've given permission.</li>
+                    <li><strong>Contract:</strong> Where necessary to perform a contract with you.</li>
+                    <li><strong>Legal Obligation:</strong> To comply with laws or regulations.</li>
+                    <li><strong>Legitimate Interest:</strong> For business operations like marketing, analysis, and communication.</li>
+                </ul>
+
+                <h4>6. Disclosure of Your Personal Data</h4>
+                <ul>
+                    <li>Service providers performing functions on our behalf (e.g., email platforms, CRM tools).</li>
+                    <li>Legal, tax, or professional advisors.</li>
+                    <li>Regulatory bodies, where required.</li>
+                    <li>Parties involved in a business transfer or reorganisation.</li>
+                </ul>
+
+                <h4>7. International Transfers</h4>
+                <p>Some of your data may be transferred outside the UK or EEA. Where this happens, we use legal safeguards such as Standard Contractual Clauses to ensure appropriate data protection.</p>
+
+                <h4>8. Data Security</h4>
+                <p>We use technical and organisational measures to protect your data against unauthorised access, misuse, loss, or destruction.</p>
+
+                <h4>9. Data Retention</h4>
+                <p>We retain your personal data only as long as necessary for the purposes it was collected, including legal or operational requirements.</p>
+
+                <h4>10. Your Data Protection Rights</h4>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Request access, correction, or deletion of your personal data.</li>
+                    <li>Object to or restrict processing.</li>
+                    <li>Request data portability.</li>
+                    <li>Withdraw consent at any time.</li>
+                </ul>
+                <p>To exercise your rights, contact us at <a href="mailto:admin@onthecurbrealestate.co.uk">admin@onthecurbrealestate.co.uk</a>.</p>
+
+                <h4>11. Cookies and Tracking Technologies</h4>
+                <p>We use cookies to enhance user experience, track website usage, and improve our marketing. You can manage your cookie preferences via your browser settings.</p>
+
+                <h4>12. Educational Materials & Lead Magnet Data</h4>
+                <p>All downloadable materials (including the OTC Buy-to-Let Wealth Builder Blueprint™ and Off-Market Deal Access Form) are provided strictly for educational and informational purposes. These do not constitute financial, investment, or legal advice.</p>
+                <p>Data collected during downloads (e.g., name, email, metadata) is stored securely and used to follow up with relevant resources, communications, and onboarding.</p>
+
+                <h4>13. External Hosting and Third-Party Links</h4>
+                <p>Some content (e.g., downloadable PDFs) is hosted via secure third-party platforms such as Google Drive. When you access these materials, you may be redirected. We are not responsible for the privacy practices of those external services.</p>
+                <p>Our website may also contain links to external websites – we are not responsible for their content or privacy policies.</p>
+
+                <h4>14. No Financial Advice</h4>
+                <p>On The Curb Real Estate Ltd does not provide regulated financial advice. All communications, documents, and recommendations are for general educational purposes only. Investors should conduct their own due diligence or consult independent professionals before making decisions.</p>
+
+                <h4>15. Not a Property Management Company</h4>
+                <p>On The Curb Real Estate Ltd does not operate as a property management company. We do not offer rent collection, tenant placement, maintenance, or day-to-day property services. Our role is strictly limited to sourcing and packaging property investment opportunities.</p>
+
+                <h4>16. Referral Programme</h4>
+                <p>When you use our referral form, we collect basic details about you and the person you're referring to track the referral and issue rewards. This includes names, contact info, and status updates.</p>
+                <p>We only use this data to verify referrals, communicate updates, and prevent misuse. Referral info is stored securely. You must have the referred person's permission before submitting.</p>
+                <p>We won’t send them marketing unless they opt in directly.</p>
+
+                <h4>17. Complaints</h4>
+                <p>If you have concerns about how we handle your personal data, please contact us first at <a href="mailto:admin@onthecurbrealestate.co.uk">admin@onthecurbrealestate.co.uk</a>. Include your name, contact details, and a clear description of the issue.</p>
+                <p>We aim to acknowledge your complaint within 5 working days and provide a full response within 28 days.</p>
+                <p>If you are not satisfied with our response, you have the right to lodge a complaint with the UK Information Commissioner’s Office (ICO):</p>
+                <ul>
+                    <li><strong>Website:</strong> <a href="https://www.ico.org.uk" target="_blank" rel="noopener">www.ico.org.uk</a></li>
+                    <li><strong>Telephone:</strong> 0303 123 1113</li>
+                    <li><strong>Address:</strong> Information Commissioner's Office, Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF</li>
+                </ul>
+
+                <h4>18. Changes to this Privacy Policy</h4>
+                <p>We may update this policy periodically. Changes will be posted on our website or sent via email where required.</p>
+
+                <h4>19. Contact Information</h4>
+                <ul>
+                    <li><strong>Business Name:</strong> On The Curb Real Estate Ltd</li>
+                    <li><strong>Email:</strong> <a href="mailto:admin@onthecurbrealestate.co.uk">admin@onthecurbrealestate.co.uk</a></li>
+                    <li><strong>Registered Location:</strong> London, United Kingdom</li>
+                    <li><strong>Company Number:</strong> 16392328</li>
+                </ul>
+                <h5>Regulatory Compliance</h5>
+                <ul>
+                    <li><strong>ICO Registration Number:</strong> ZB895054</li>
+                    <li><strong>Property Redress Scheme (PRS) Number:</strong> PRS051813</li>
+                    <li><strong>MLR Registration Number:</strong> XSML00000209159 (Application Pending – Trading Permitted)</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('modal-privacy')">I Understand</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-terms">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Terms and Conditions</h3>
+                <button class="modal-close" onclick="closeModal('modal-terms')">CLOSE ✕</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Effective Date:</strong> 15/04/2025</p>
+
+                <h4>1. Introduction</h4>
+                <p>Welcome to On The Curb Real Estate Ltd (“we”, “us”, or “our”). These Terms and Conditions govern your use of our website and our property sourcing services. By accessing or using our site, you agree to be bound by these terms.</p>
+
+                <h4>2. Service Description</h4>
+                <p>On The Curb Real Estate Ltd is a UK-based property sourcing company. We connect investors with off-market and on-market property opportunities. We do not buy or sell properties ourselves, nor do we act as estate agents or financial advisors. Our role is limited to the introduction of opportunities and facilitation of communication between buyers and sellers.</p>
+
+                <h4>3. No Financial Advice</h4>
+                <p>We do not provide financial, legal, tax, or investment advice. Any information provided on our site or in our deal packs is for informational purposes only. You should conduct your own due diligence and seek professional advice before making any investment decision.</p>
+
+                <h4>4. Use of Website</h4>
+                <p>You agree to use our website only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit the use and enjoyment of the site by anyone else.</p>
+
+                <h4>5. Fees and Payment</h4>
+                <p>All fees for sourcing services will be outlined in a Sourcing Agreement or Assignment Agreement signed between On The Curb Real Estate Ltd and the investor. Fees are non-refundable unless otherwise agreed in writing.</p>
+
+                <h4>6. Non-Circumvention</h4>
+                <p>By receiving property information from us, you agree not to bypass or attempt to bypass us to deal directly with the vendor, agent, or any third party we introduced. If circumvention occurs, we reserve the right to seek damages and our full sourcing fee.</p>
+
+                <h4>7. Intellectual Property</h4>
+                <p>All content on our website – including text, images, logos, and deal materials – is the property of On The Curb Real Estate Ltd and may not be copied, reproduced, or reused without our written consent.</p>
+
+                <h4>8. Limitation of Liability</h4>
+                <p>We are not liable for any loss or damage arising from your use of our services or reliance on any property information we provide. All property investments carry risk and returns are not guaranteed.</p>
+
+                <h4>9. Third-Party Links</h4>
+                <p>Our website may contain links to third-party websites. We are not responsible for the content, accuracy, or privacy practices of these websites.</p>
+
+                <h4>10. Regulatory Information</h4>
+                <ul>
+                    <li><strong>ICO Registration Number:</strong> ZB895054</li>
+                    <li><strong>Property Redress Scheme (PRS) Membership Number:</strong> PRS051813</li>
+                    <li><strong>MLR Registration Number:</strong> XSML00000209159 (Application Pending – Trading Permitted)</li>
+                    <li><strong>Company Number:</strong> 16392328 (Registered in England and Wales)</li>
+                </ul>
+
+                <h4>11. Governing Law</h4>
+                <p>These Terms and Conditions are governed by and construed in accordance with the laws of England and Wales. Any disputes arising in connection with these terms shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+                <h4>12. Changes to Terms</h4>
+                <p>We reserve the right to modify these Terms and Conditions at any time. Updated versions will be posted on our website with a revised effective date.</p>
+
+                <h4>13. Contact Us</h4>
+                <p>If you have any questions about these Terms and Conditions, please contact us at: <a href="mailto:admin@onthecurbrealestate.co.uk">admin@onthecurbrealestate.co.uk</a></p>
+
+                <h4>14. Complaints Procedure</h4>
+                <p>We are committed to delivering a high standard of service. If you are dissatisfied with any aspect of your experience, please let us know so we can put things right and improve.</p>
+                
+                <h5>How to Complain:</h5>
+                <p>Send your complaint in writing by email to: <a href="mailto:admin@onthecurbrealestate.co.uk">admin@onthecurbrealestate.co.uk</a></p>
+                <p>Please include:</p>
+                <ul>
+                    <li>Your name and contact details</li>
+                    <li>A clear description of the issue</li>
+                    <li>What outcome you are seeking</li>
+                </ul>
+                
+                <h5>Our Process:</h5>
+                <ul>
+                    <li>We will acknowledge your complaint within 3 working days</li>
+                    <li>Your complaint will be reviewed by Dawud Saleem (Director)</li>
+                    <li>A full written response will be provided within 15 working days</li>
+                    <li>If further time is needed, we will keep you updated throughout</li>
+                </ul>
+                
+                <h5>Escalating to the Property Redress Scheme:</h5>
+                <p>If you are not satisfied with our final response, or if 8 weeks have passed since your initial complaint, you may refer the matter to our redress scheme:</p>
+                <p><strong>The Property Redress Scheme (PRS)</strong></p>
+                <ul>
+                    <li><strong>Website:</strong> <a href="https://www.theprs.co.uk">www.theprs.co.uk</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:complaints@theprs.co.uk">complaints@theprs.co.uk</a></li>
+                    <li><strong>Phone:</strong> 0333 321 9418</li>
+                    <li><strong>Post:</strong> Property Redress Scheme, Premiere House, Elstree Way, Borehamwood, WD6 1JH</li>
+                </ul>
+                
+                <h5>Record Keeping:</h5>
+                <p>We retain a written record of all complaints and responses for a minimum of 6 years in line with regulatory guidance.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('modal-terms')">I Understand</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+
+    <script>
+        // 1. Navigation Scroll Spy Logic (Optimized with IntersectionObserver)
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-item");
+
+        const sectionObserverOptions = {
+            root: null,
+            rootMargin: '-50% 0px -50% 0px',
+            threshold: 0
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const currentId = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove("active");
+                        // Keep 'Home' active for the first three sections
+                        if (['hero', 'why', 'clarity'].includes(currentId) && link.getAttribute("href") === "#hero") {
+                            link.classList.add("active");
+                        } else if (link.getAttribute("href") === `#${currentId}`) {
+                            link.classList.add("active");
+                        }
+                    });
+                }
+            });
+        }, sectionObserverOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+        
+        // 1b. Mobile Menu Toggle Logic
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinksContainer = document.querySelector('.nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+        
+        // Hide mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth <= 768) {
+                    navLinksContainer.classList.remove('active');
+                }
+            });
+        });
+
+        // 2. Accordion Logic (Modified to close others)
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                const container = item.parentElement;
+                
+                // Close all other items in this specific accordion container
+                container.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                    }
+                });
+                
+                // Toggle current
+                item.classList.toggle('active');
+                
+                if(item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+        
+        // 2b. Floating CTA Visibility Logic
+        const ctaBtn = document.querySelector('.floating-cta');
+        const heroSec = document.getElementById('hero');
+        const investorSec = document.getElementById('investor-access');
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                // Ensure reliable visibility check
+                const heroRect = heroSec.getBoundingClientRect();
+                const invRect = investorSec.getBoundingClientRect();
+                
+                // Buffer to define when it's "visible" on screen
+                const isHeroVisible = (heroRect.top < window.innerHeight && heroRect.bottom > 0);
+                const isInvVisible = (invRect.top < window.innerHeight && invRect.bottom > 0);
+
+                if (isHeroVisible || isInvVisible) {
+                    ctaBtn.classList.add('hidden');
+                } else {
+                    ctaBtn.classList.remove('hidden');
+                }
+            }, { threshold: [0, 0.1, 0.5, 1] });
+
+            observer.observe(heroSec);
+            observer.observe(investorSec);
+        }
+
+        // 3. Three.js "Architectural Masterplan" Logic
+        // We defer execution slightly to ensure the deferred Three.js library has loaded
+        window.addEventListener('load', function() {
+            const container = document.getElementById('canvas-container');
+            const scene = new THREE.Scene();
+            
+            // BACKGROUND & FOG - FIXED FOG FAR BOUNDARY
+            scene.background = new THREE.Color(0x080808);
+            scene.fog = new THREE.Fog(0x080808, 5, 40); 
+
+            const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000);
+            
+            // Add mobile check
+            let isMobile = window.innerWidth < 768;
+            let mobileFrameCount = 0; // Ensures compilation on mobile before terminating loop
+            let lastWidth = window.innerWidth; // For resize gating
+            
+            // Limit pixel ratio on mobile to prevent GPU lag
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap; 
+            container.appendChild(renderer.domElement);
+
+            const cityGroup = new THREE.Group();
+            scene.add(cityGroup);
+
+            const ambientLight = new THREE.AmbientLight(0x2c3e50, 1.5); 
+            scene.add(ambientLight);
+
+            const dirLight = new THREE.DirectionalLight(0xfff0dd, 2); 
+            dirLight.position.set(10, 12, 5);
+            dirLight.castShadow = true;
+            dirLight.shadow.mapSize.width = 2048;
+            dirLight.shadow.mapSize.height = 2048;
+            dirLight.shadow.camera.near = 0.5;
+            dirLight.shadow.camera.far = 50;
+            scene.add(dirLight);
+
+            const spotLight = new THREE.SpotLight(0xe93f00, 5);
+            spotLight.position.set(-10, 5, -5);
+            spotLight.lookAt(0,0,0);
+            scene.add(spotLight);
+
+            const buildMaterial = new THREE.MeshStandardMaterial({
+                color: 0x1a1a1a,
+                roughness: 0.7,
+                metalness: 0.1,
+            });
+
+            const roofMaterial = new THREE.MeshStandardMaterial({
+                color: 0x222222,
+                roughness: 0.2,
+                metalness: 0.1,
+            });
+
+            const edgeMaterial = new THREE.LineBasicMaterial({
+                color: 0x444444, 
+                transparent: true, 
+                opacity: 0.3
+            });
+
+            // Lower geometry count on mobile
+            const boxGeo = new THREE.BoxGeometry(1, 1, 1);
+            const gridSize = isMobile ? 3 : 6; 
+            const gap = 1.2; 
+
+            for (let x = -gridSize; x <= gridSize; x++) {
+                for (let z = -gridSize; z <= gridSize; z++) {
+                    if (Math.random() > 0.7) continue;
+                    if (Math.abs(x) < 2 && Math.abs(z) < 2) continue; 
+
+                    const height = Math.random() * 2 + 0.5; 
+                    const mesh = new THREE.Mesh(boxGeo, buildMaterial);
+                    mesh.position.x = x * gap;
+                    mesh.position.z = z * gap;
+                    mesh.position.y = height / 2;
+                    mesh.scale.set(0.8 + Math.random()*0.2, height, 0.8 + Math.random()*0.2);
+                    mesh.castShadow = true;
+                    mesh.receiveShadow = true;
+                    cityGroup.add(mesh);
+
+                    const roof = new THREE.Mesh(boxGeo, roofMaterial);
+                    roof.position.copy(mesh.position);
+                    roof.position.y = height + 0.01; 
+                    roof.scale.set(mesh.scale.x, 0.02, mesh.scale.z);
+                    roof.receiveShadow = true;
+                    cityGroup.add(roof);
+
+                    const edges = new THREE.EdgesGeometry(new THREE.BoxGeometry(mesh.scale.x, height, mesh.scale.z));
+                    const line = new THREE.LineSegments(edges, edgeMaterial);
+                    line.position.copy(mesh.position);
+                    cityGroup.add(line);
+                }
+            }
+
+            const planeGeometry = new THREE.PlaneGeometry(60, 60);
+            const planeMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x080808,
+                roughness: 1,
+                metalness: 0
+            });
+            const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+            plane.rotation.x = -Math.PI / 2;
+            plane.receiveShadow = true;
+            cityGroup.add(plane);
+
+            const gridHelper = new THREE.GridHelper(60, 60, 0x333333, 0x111111);
+            gridHelper.position.y = 0.01;
+            cityGroup.add(gridHelper);
+
+            // Dynamic base Z position for Mobile 3D camera
+            const baseZ = window.innerWidth < 768 ? 25 : 12;
+            camera.position.set(0, 4, baseZ); 
+            camera.lookAt(0, 0, 0);
+
+            let mouseX = 0;
+            let mouseY = 0;
+            const windowHalfX = window.innerWidth / 2;
+            const windowHalfY = window.innerHeight / 2;
+
+            document.addEventListener('mousemove', (event) => {
+                if (!isMobile) {
+                    mouseX = (event.clientX - windowHalfX);
+                    mouseY = (event.clientY - windowHalfY);
+                }
+            });
+
+            const clock = new THREE.Clock();
+
+            // Setup observer to pause animation when hero is not visible
+            let isCanvasVisible = true;
+            const canvasObserver = new IntersectionObserver((entries) => {
+                isCanvasVisible = entries[0].isIntersecting;
+            }, { threshold: 0 });
+            canvasObserver.observe(document.getElementById('hero'));
+
+            // Throttle variables for 30 FPS
+            let lastFrameTime = 0;
+            const fpsInterval = 1000 / 30;
+
+            function animate(currentTime) {
+                // Kill loop entirely on mobile after 3 frames to guarantee painted textures
+                if (isMobile && mobileFrameCount >= 3) return;
+
+                requestAnimationFrame(animate);
+                
+                // Pause rendering to save battery/CPU when out of view (on desktop)
+                if (!isCanvasVisible && !isMobile) return;
+
+                // Throttle rendering to ~30 FPS
+                if (currentTime - lastFrameTime < fpsInterval) return;
+                lastFrameTime = currentTime;
+
+                // FIX: Only update the rotation and camera position if NOT on mobile
+                if (!isMobile) {
+                    const elapsedTime = clock.getElapsedTime();
+                    cityGroup.rotation.y = elapsedTime * 0.01; 
+                    camera.position.x += (mouseX * 0.001 - camera.position.x) * 0.05;
+                    camera.position.y += ( -(mouseY * 0.001) + 4 - camera.position.y) * 0.05;
+                    camera.lookAt(0, 1, 0);
+                }
+                
+                renderer.render(scene, camera);
+
+                if (isMobile) mobileFrameCount++;
+            }
+
+            animate(0);
+
+            window.addEventListener('resize', () => {
+                // Gating: If width hasn't changed (standard mobile scroll behavior), skip resize logic
+                if (window.innerWidth < 768 && window.innerWidth === lastWidth) return;
+                lastWidth = window.innerWidth;
+
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                
+                // Update dynamic Z position on resize
+                isMobile = window.innerWidth < 768;
+                camera.position.z = isMobile ? 25 : 12;
+                
+                // If switching back to mobile view mid-session, force a re-render
+                if (isMobile) {
+                    mobileFrameCount = 0;
+                    animate(performance.now());
+                }
+            });
+        });
+
+        // 4. Modal Logic
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = ''; // Restore background scrolling
+        }
+
+        // Close modal when clicking the semi-transparent overlay outside the card
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if(e.target === this) {
+                    closeModal(this.id);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
