@@ -1107,6 +1107,7 @@
                     <p style="font-size: 0.85rem; margin-bottom: 2rem;">Complete the details below to proceed to the platform.</p>
                     
                    <form name="investor-access" method="POST" data-netlify="true" action="/success.html">
+                        <input type="hidden" name="form-name" value="investor-access" />
                         <div class="form-grid">
                             <div class="form-group full-width">
                                 <label>Full Name *</label>
@@ -1210,6 +1211,7 @@
             <h2 class="text-center" style="margin-bottom: var(--spacing-lg);">CONTACT US</h2>
             <div class="contact-wrap">
                <form name="contact-enquiry" method="POST" data-netlify="true" action="/success.html">
+                    <input type="hidden" name="form-name" value="contact-enquiry" />
                     <div class="form-group">
                         <label>FULL NAME *</label>
                         <input type="text" name="full_name" required>
