@@ -306,8 +306,7 @@
             color: var(--accent-primary);
             letter-spacing: 0.15em;
             font-size: 1rem;
-            text-transform: uppercase;
-            margin: 0;
+            text-transform: uppercase; margin: 0;
         }
         
         .mobile-break { display: none; }
@@ -1107,7 +1106,7 @@
                     <h3 style="margin-bottom: 0.5rem; color: var(--text-main);">Investor Access Form</h3>
                     <p style="font-size: 0.85rem; margin-bottom: 2rem;">Complete the details below to proceed to the platform.</p>
                     
-                   <form name="investor-access" method="POST" data-netlify="true" action="success.html">
+                   <form name="investor-access" method="POST" data-netlify="true" action="/success.html">
                         <div class="form-grid">
                             <div class="form-group full-width">
                                 <label>Full Name *</label>
@@ -1142,6 +1141,7 @@
                                     <option value="">Select...</option>
                                     <option>Up to £100k</option>
                                     <option>£100k - £250k</option>
+                                    <option>£250k - £500k</option>
                                     <option>£250k - £500k</option>
                                     <option>£500k - £1M</option>
                                     <option>£1M+</option>
@@ -1209,7 +1209,7 @@
         <div class="container">
             <h2 class="text-center" style="margin-bottom: var(--spacing-lg);">CONTACT US</h2>
             <div class="contact-wrap">
-               <form name="contact-enquiry" method="POST" data-netlify="true" action="success.html">
+               <form name="contact-enquiry" method="POST" data-netlify="true" action="/success.html">
                     <div class="form-group">
                         <label>FULL NAME *</label>
                         <input type="text" name="full_name" required>
