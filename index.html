@@ -1106,24 +1106,24 @@
                     <h3 style="margin-bottom: 0.5rem; color: var(--text-main);">Investor Access Form</h3>
                     <p style="font-size: 0.85rem; margin-bottom: 2rem;">Complete the details below to proceed to the platform.</p>
                     
-                   <form name="investor-access" method="POST" data-netlify="true" action="/success.html">
+                   <form id="investor-form">
                         <input type="hidden" name="form-name" value="investor-access" />
                         <div class="form-grid">
                             <div class="form-group full-width">
                                 <label>Full Name *</label>
-                                <input type="text" name="full_name" required>
+                                <input type="text" name="FULL NAME" required>
                             </div>
                             <div class="form-group">
                                 <label>Email Address *</label>
-                                <input type="email" name="email" required>
+                                <input type="email" name="EMAIL ADDRESS" required>
                             </div>
                             <div class="form-group">
                                 <label>Phone Number *</label>
-                                <input type="tel" name="phone" required>
+                                <input type="tel" name="PHONE NUMBER" required>
                             </div>
                             <div class="form-group">
                                 <label>Preferred Investment Strategy *</label>
-                                <select name="strategy" required>
+                                <select name="PREFERRED INVESTMENT STRATEGY" required>
                                     <option value="">Select...</option>
                                     <option>Buy-to-Let</option>
                                     <option>HMO</option>
@@ -1134,11 +1134,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Target Location(s) *</label>
-                                <input type="text" name="location" required>
+                                <input type="text" name="TARGET LOCATION(S)" required>
                             </div>
                             <div class="form-group">
                                 <label>Budget Range *</label>
-                                <select name="budget" required>
+                                <select name="BUDGET RANGE" required>
                                     <option value="">Select...</option>
                                     <option>Up to £100k</option>
                                     <option>£100k - £250k</option>
@@ -1150,7 +1150,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Timeline to Purchase *</label>
-                                <select name="timeline" required>
+                                <select name="TIMELINE TO PURCHASE" required>
                                     <option value="">Select...</option>
                                     <option>Ready to proceed</option>
                                     <option>Within 3 months</option>
@@ -1161,7 +1161,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Current Portfolio Position *</label>
-                                <select name="portfolio" required>
+                                <select name="CURRENT PORTFOLIO POSITION" required>
                                     <option value="">Select...</option>
                                     <option>First investment</option>
                                     <option>1-3 properties</option>
@@ -1171,7 +1171,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Current Capital Position *</label>
-                                <select name="capital" required>
+                                <select name="CURRENT CAPITAL POSITION" required>
                                     <option value="">Select...</option>
                                     <option>Full purchase funds available</option>
                                     <option>Deposit funds available</option>
@@ -1181,7 +1181,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Primary Funding Method *</label>
-                                <select name="funding" required>
+                                <select name="PRIMARY FUNDING METHOD" required>
                                     <option value="">Select...</option>
                                     <option>Cash</option>
                                     <option>Mortgage</option>
@@ -1191,7 +1191,7 @@
                             </div>
                             <div class="form-group full-width">
                                 <label>Additional Notes</label>
-                                <textarea name="notes" rows="3"></textarea>
+                                <textarea name="ADDITIONAL NOTES" rows="3"></textarea>
                             </div>
                         </div>
 
@@ -1812,6 +1812,32 @@
                 if(e.target === this) {
                     closeModal(this.id);
                 }
+            });
+        });
+        
+        document.getElementById('investor-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop the page from reloading/leaving
+
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Replace with your specific Investor Access hook
+            const zapierHook = "https://hooks.zapier.com/hooks/catch/22461212/ucv7bc3/";
+
+            fetch(zapierHook, {
+                method: 'POST',
+                body: JSON.stringify(data), // Sending as JSON ensures Zapier parses it correctly
+            })
+            .then(response => {
+                // Now that data is sent, manually redirect
+                window.location.href = "/success.html";
+            })
+            .catch(error => {
+                console.error('Submission error:', error);
+                alert('There was an error. Please try again or contact admin.');
             });
         });
     </script>
